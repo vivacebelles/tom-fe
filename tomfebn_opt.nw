@@ -1,9 +1,5 @@
-echo
-
-start molecule
-
+start tomfe_opt1
 title "ToMFeBn"
-charge 0
 
 geometry units angstroms print xyz autosym
   Fe        9.54641        2.32429        8.53473

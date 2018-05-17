@@ -1,0 +1,297 @@
+Thu May 17 11:08:29 CDT 2018
+pwd = /home/alolinco/nwchem-jobs/tom-fe
+
+* Begin Debugging Info
+** Submission file
+	#!/bin/bash
+	#SBATCH --job-name=tomfebn_opt
+	#SBATCH --output=tomfebn_opt.stdout
+	#SBATCH --error=tomfebn_opt.stderr
+	#SBATCH --nodes=1
+	#SBATCH --ntasks-per-node=4
+	#SBATCH --time=36:00:00
+	source /work/LAS/twindus-lab/nwchem/6.6/environment
+	TMPDIR=${TMPDIR:-/home/alolinco/nwchem-jobs/tom-fe}
+	cat << EOF_print_debug_info
+	$(printf "%s\n" "$(date)")
+	$(printf "pwd = %s\n" "$PWD")
+	
+	* Begin Debugging Info
+	** Submission file
+	$(cat /home/alolinco/nwchem-jobs/tom-fe/tomfebn_opt.sub | sed s/\^/\\t/)
+	
+	** Working Directory
+	TMPDIR=$TMPDIR: $([ -d $TMPDIR ] && printf "exists\n" || printf "does not exist\n")
+	
+	** Node List
+	$(cat ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	
+	** PATH
+	$(printf "%s\n" "$PATH" | sed s/:/\\n/g)
+	
+	** LD_LIBRARY_PATH
+	$(printf "%s\n" "$LD_LIBRARY_PATH" | sed s/:/\\n/g)
+	
+	** env
+	$(env)
+	
+	** jobfile
+	$(cat /home/alolinco/nwchem-jobs/tom-fe/tomfebn_opt | sed s/\^/\\t/)
+	
+	* Begin run output
+	EOF_print_debug_info
+	# Print node information and copy files for job
+	cat >> /home/alolinco/nwchem-jobs/tom-fe/tomfebn_opt.nodes << EOF_jobinfo
+	===$(date +"%Y-%m-%d-%r") run nodes===
+	$(uniq ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	Working directory $TMPDIR
+	EOF_jobinfo
+	
+	ulimit -s unlimited
+	ulimit -c unlimited
+	ulimit -l unlimited
+	cd $TMPDIR
+	cp -v /home/alolinco/nwchem-jobs/tom-fe/{tomfebn_opt,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
+	printf "Starting %s at %s.\n" "$(which nwchem)" "$(date)"
+	export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
+	export ARMCI_DEFAULT_SHMMAX=32768
+	srun -N 1 -n 4 nwchem tomfebn_opt |& tee /home/alolinco/nwchem-jobs/tom-fe/tomfebn_opt.out
+	printf "%s: nwchem finished with status $?\n" "$(date)"
+	cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /home/alolinco/nwchem-jobs/tom-fe
+
+** Working Directory
+TMPDIR=/scratch/alolinco/289033: exists
+
+** Node List
+condo063
+condo063
+condo063
+condo063
+
+** PATH
+/work/LAS/twindus-lab/nwchem/6.6-intel/bin
+/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64
+/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64
+/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin
+/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin
+/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin
+/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin
+/usr/lib64/qt-3.3/bin
+/usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
+/home/alolinco/.local/bin
+/home/alolinco/bin
+
+** LD_LIBRARY_PATH
+/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7
+/shared/hpc/intel/17.4/debugger_2017/iga/lib
+/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+
+** env
+MKLROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl
+CPLUS_INCLUDE_PATH=/shared/hpc/intel/17.4//clck/2017.2.019/include
+SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+SLURM_NODELIST=condo063
+MPS_STAT_DIR_POSTFIX=%D-%T
+MPS_INTEL_LIBITTNOTIFY64=libmps.so
+SLURM_JOB_NAME=tomfebn_opt
+MANPATH=/shared/hpc/intel/17.4/itac/2017.3.030/man:/shared/hpc/intel/17.4/man/common:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/man:/usr/share/lmod/lmod/share/man::
+XDG_SESSION_ID=534072
+VT_MPI=impi4
+SLURMD_NODENAME=condo063
+SLURM_TOPOLOGY_ADDR=condo063
+SLURM_NTASKS_PER_NODE=4
+HOSTNAME=condo063
+SLURM_PRIO_PROCESS=0
+SELINUX_ROLE_REQUESTED=
+IPPROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp
+INTEL_LICENSE_FILE=/shared/hpc/intel/17.4/licenses
+SLURM_NODE_ALIASES=(null)
+CLCK_ROOT=/shared/hpc/intel/17.4//clck/2017.2.019
+TERM=xterm-256color
+SHELL=/bin/bash
+MPS_LD_PRELOAD=libmps.so
+SLURM_JOB_QOS=normal
+HISTSIZE=1000
+GDBSERVER_MIC=/shared/hpc/intel/17.4/debugger_2017/gdb/targets/mic/bin/gdbserver
+LMOD_DEFAULT_MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+MODULEPATH_ROOT=/usr/share/modulefiles
+TMPDIR=/scratch/alolinco/289033
+SSH_CLIENT=10.25.147.217 63284 22
+LIBRARY_PATH=/shared/hpc/intel/17.4/clck/2017.2.019/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+SELINUX_USE_CURRENT_RANGE=
+LMOD_PKG=/usr/share/lmod/lmod
+QTDIR=/usr/lib64/qt-3.3
+ADVISOR_2017_DIR=/shared/hpc/intel/17.4/advisor_2017.1.3.510716
+LMOD_VERSION=6.5.1
+QTINC=/usr/lib64/qt-3.3/include
+MIC_LD_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+SSH_TTY=/dev/pts/128
+VTUNE_AMPLIFIER_XE_2017_DIR=/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739
+QT_GRAPHICSSYSTEM_CHECKED=1
+SLURM_NNODES=1
+USER=alolinco
+NWCHEM_TOP=/work/LAS/twindus-lab/nwchem/6.6-intel/
+LD_LIBRARY_PATH=/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/debugger_2017/iga/lib:/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+LMOD_sys=Linux
+MPS_STAT_ENABLE_IDLE_VAL=1
+MIC_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+CPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/include
+SLURM_JOBID=289033
+SLURM_NTASKS=4
+NWCHEM_BASIS_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/
+LMOD_PREPEND_BLOCK=normal
+NLSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64/locale/%l_%t/%N:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/share/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64/share/locale/%l_%t/%N
+MPS_STAT_LEVEL=5
+VT_ADD_LIBS=-ldwarf -lelf -lvtunwind -lm -lpthread
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MSxiYXNlTXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXt9LGluYWN0aXZlPXt9LG1UPXtpbnRlbD17WyJGTiJdPSIvZXRjL21vZHVsZWZpbGVzL2ludGVsLzE3LjQiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNy40IixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJp
+SLURM_TASKS_PER_NODE=4
+MAIL=/var/spool/mail/alolinco
+PATH=/work/LAS/twindus-lab/nwchem/6.6-intel/bin:/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64:/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64:/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin:/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin:/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/alolinco/.local/bin:/home/alolinco/bin
+NWCHEM_NWPW_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraryps/
+MPS_KMP_FORKJOIN_FRAMES_MODE=3
+SLURM_JOB_ID=289033
+TBBROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb
+LMOD_SETTARG_CMD=:
+F90=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_JOB_USER=alolinco
+PWD=/home/alolinco/nwchem-jobs/tom-fe
+_LMFILES_=/etc/modulefiles/intel/17.4
+GDB_CROSS=/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin/gdb-mic
+LANG=en_US.UTF-8
+MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+VT_LIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/lib
+LOADEDMODULES=intel/17.4
+_ModuleTable_Sz_=2
+SLURM_JOB_UID=369342
+SLURM_NODEID=0
+MPS_STAT_ENABLE_IDLE=I_MPI_PVAR_IDLE
+F77=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_SUBMIT_DIR=/home/alolinco/nwchem-jobs/tom-fe
+SELINUX_LEVEL_REQUESTED=
+VT_ROOT=/shared/hpc/intel/17.4//itac/2017.3.030
+SLURM_TASK_PID=21852
+SLURM_NPROCS=4
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+MPS_TOOL_ROOT=/shared/hpc/intel/17.4/itac/2017.3.030
+DAALROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal
+SLURM_CPUS_ON_NODE=4
+MPM_LAUNCHER=/shared/hpc/intel/17.4/debugger_2017/mpm/mic/bin/start_mpm.sh
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+HISTCONTROL=ignoredups
+KRB5CCNAME=KEYRING:persistent:369342
+INTEL_PYTHONHOME=/shared/hpc/intel/17.4/debugger_2017/python/intel64/
+SLURM_JOB_NODELIST=condo063
+SPCE=/work/LAS/twindus-lab/nwchem/6.6-intel/data/solvents/spce.rst
+SHLVL=3
+HOME=/home/alolinco
+SLURM_LOCALID=0
+_ModuleTable002_=bnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsWyJ2ZXJzaW9uIl09Mix9
+SLURM_JOB_GID=101
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_CLUSTER_NAME=condo2017
+AMBER_1=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_s/
+VT_SLIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/slib
+VT_ARCH=intel64
+FC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=condo2017.its.iastate.edu
+AMBER_2=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_q/
+SLURM_JOB_PARTITION=short_1node
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+AMBER_3=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_x/
+PYTHONPATH=/shared/hpc/intel/17.4/advisor_2017.1.3.510716/pythonapi
+LMOD_arch=x86_64
+LOGNAME=alolinco
+AMBER_4=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_u/
+QTLIB=/usr/lib64/qt-3.3/lib
+CLASSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib/mpi.jar:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/daal.jar
+SLURM_JOB_ACCOUNT=its-hpc-condo-las
+XDG_DATA_DIRS=/home/alolinco/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+SSH_CONNECTION=10.25.147.217 63284 10.24.107.19 22
+MPS_STAT_MESSAGES=1
+SLURM_JOB_NUM_NODES=1
+MODULESHOME=/usr/share/lmod/lmod
+CHARMM_X=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_x/
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+INSPECTOR_2017_DIR=/shared/hpc/intel/17.4/inspector_2017.1.3.510645
+INFOPATH=/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/info
+LMOD_FULL_SETTARG_SUPPORT=no
+CC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/icc
+XDG_RUNTIME_DIR=/run/user/369342
+CHARMM_S=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_s/
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+PBS_NODEFILE=/scratch/alolinco/289033/NyLM4pkJNV
+SLURM_MEM_PER_NODE=128835
+LMOD_COLORIZE=yes
+I_MPI_ROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi
+BASH_FUNC_module()=() {  eval $($LMOD_CMD bash "$@");
+ [ $? = 0 ] && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+BASH_FUNC_ml()=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+_=/usr/bin/env
+
+** jobfile
+
+
+* Begin run output
+Starting /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem at Thu May 17 11:08:29 CDT 2018.
+export PBS_NODEFILE=/scratch/alolinco/289033/MjdO7c5izJ
+export TMPDIR=/scratch/alolinco/289033
+ argument  1 = tomfebn_opt
+  Unable to open tomfebn_opt --- appending .nw
+ ------------------------------------------------------------------------
+ nwchem: failed to open the input file                   0
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+  current input line : 
+     0: 
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ There is an error in the input file
+ ------------------------------------------------------------------------
+ For more information see the NWChem manual at 
+ http://www.nwchem-sw.org/index.php/NWChem_Documentation
+
+
+ For further details see manual section: 
+                                                                                
+                                                                                
+                                                                                
+                   
+-1:0:nwchem: failed to open the input file:: -1
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+nwchem             00000000055E0534  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002B99278555E0  Unknown               Unknown  Unknown
+libc-2.17.so       00002B992949E6E4  _IO_vfprintf          Unknown  Unknown
+libc-2.17.so       00002B99294A2431  Unknown               Unknown  Unknown
+libc-2.17.so       00002B992949D36E  _IO_vfprintf          Unknown  Unknown
+libc-2.17.so       00002B99294A78C9  _IO_printf            Unknown  Unknown
+nwchem             0000000002D67426  Unknown               Unknown  Unknown
+nwchem             0000000002C8CEB4  Unknown               Unknown  Unknown
+nwchem             0000000002C33327  Unknown               Unknown  Unknown
+nwchem             0000000000AB4C47  Unknown               Unknown  Unknown
+nwchem             0000000000408157  Unknown               Unknown  Unknown
+nwchem             000000000040801E  Unknown               Unknown  Unknown
+libc-2.17.so       00002B9929477C05  __libc_start_main     Unknown  Unknown
+nwchem             0000000000407F29  Unknown               Unknown  Unknown
+srun: error: condo063: task 0: Exited with exit code 174

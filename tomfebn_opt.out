@@ -1,0 +1,41 @@
+export PBS_NODEFILE=/scratch/alolinco/289078/5F3abhf4ur
+export TMPDIR=/scratch/alolinco/289078
+ argument  1 = tomfebn_opt
+  Unable to open tomfebn_opt --- appending .nw
+ ------------------------------------------------------------------------
+ nwchem: failed to open the input file                   0
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+  current input line : 
+     0: 
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ There is an error in the input file
+ ------------------------------------------------------------------------
+ For more information see the NWChem manual at 
+ http://www.nwchem-sw.org/index.php/NWChem_Documentation
+
+
+ For further details see manual section: 
+                                                                                
+                                                                                
+                                                                                
+                   
+-1:0:nwchem: failed to open the input file:: -1
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+nwchem             00000000055E0534  Unknown               Unknown  Unknown
+libpthread-2.17.s  00002AB25C9045E0  Unknown               Unknown  Unknown
+libc-2.17.so       00002AB25E54D6E4  _IO_vfprintf          Unknown  Unknown
+libc-2.17.so       00002AB25E551431  Unknown               Unknown  Unknown
+libc-2.17.so       00002AB25E54C36E  _IO_vfprintf          Unknown  Unknown
+libc-2.17.so       00002AB25E5568C9  _IO_printf            Unknown  Unknown
+nwchem             0000000002D67426  Unknown               Unknown  Unknown
+nwchem             0000000002C8CEB4  Unknown               Unknown  Unknown
+nwchem             0000000002C33327  Unknown               Unknown  Unknown
+nwchem             0000000000AB4C47  Unknown               Unknown  Unknown
+nwchem             0000000000408157  Unknown               Unknown  Unknown
+nwchem             000000000040801E  Unknown               Unknown  Unknown
+libc-2.17.so       00002AB25E526C05  __libc_start_main     Unknown  Unknown
+nwchem             0000000000407F29  Unknown               Unknown  Unknown
+srun: error: condo037: task 0: Exited with exit code 174
