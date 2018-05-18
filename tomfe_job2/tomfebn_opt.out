@@ -1,5 +1,5 @@
-export PBS_NODEFILE=/scratch/alolinco/289170/TS6DYk1DIb
-export TMPDIR=/scratch/alolinco/289170
+export PBS_NODEFILE=/scratch/alolinco/289089/YhVcl7Nz0O
+export TMPDIR=/scratch/alolinco/289089
  argument  1 = tomfebn_opt.nw
                                          
                                          
@@ -38,9 +38,9 @@ export TMPDIR=/scratch/alolinco/289170
            Job information
            ---------------
 
-    hostname        = condo185
+    hostname        = condo054
     program         = /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem
-    date            = Thu May 17 16:26:35 2018
+    date            = Thu May 17 12:30:27 2018
 
     compiled        = Tue_Oct_24_08:26:58_2017
     source          = /home/weverett/build/nwchem/nwchem-6.6-intel
@@ -2070,7 +2070,7 @@ export TMPDIR=/scratch/alolinco/289170
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
   current input line : 
-   174: task scf energy
+   172: task scf energy
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
  There is an error in the input file
@@ -2085,7 +2085,7 @@ export TMPDIR=/scratch/alolinco/289170
                                                                                 
                    
 0:0:scf: no. of closed-shell electrons is not even!:: 3
-(rank:0 hostname:condo185 pid:18823):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:0 hostname:condo054 pid:27878):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 0:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000007, 3) - process 0
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
@@ -2098,19 +2098,6 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
  ------------------------------------------------------------------------
  There is an error in the input file
  ------------------------------------------------------------------------
- scf: no. of closed-shell electrons is not even!                   3
- ------------------------------------------------------------------------
- ------------------------------------------------------------------------
-  current input line : 
-     0: 
- ------------------------------------------------------------------------
- ------------------------------------------------------------------------
- There is an error in the input file
- ------------------------------------------------------------------------
- For more information see the NWChem manual at 
- http://www.nwchem-sw.org/index.php/NWChem_Documentation
-
-
  For more information see the NWChem manual at 
  http://www.nwchem-sw.org/index.php/NWChem_Documentation
 
@@ -2121,20 +2108,10 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
                                                                                 
                    
 1:1:scf: no. of closed-shell electrons is not even!:: 3
-(rank:1 hostname:condo185 pid:18824):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
- For further details see manual section: 
-                                                                                
-                                                                                
-                                                                                
-                   
-3:3:scf: no. of closed-shell electrons is not even!:: 3
-(rank:3 hostname:condo185 pid:18826):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:1 hostname:condo054 pid:27879):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 1:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 1
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 1)
-Last System Error Message from Task 3:: Inappropriate ioctl for device
-application called MPI_Abort(comm=0x84000004, 3) - process 3
-In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 3)
  scf: no. of closed-shell electrons is not even!                   3
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
@@ -2154,11 +2131,33 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 3)
                                                                                 
                    
 2:2:scf: no. of closed-shell electrons is not even!:: 3
-(rank:2 hostname:condo185 pid:18825):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:2 hostname:condo054 pid:27880):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 2:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 2
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 2)
-slurmstepd: error: *** STEP 289170.0 ON condo185 CANCELLED AT 2018-05-17T16:26:37 ***
+ scf: no. of closed-shell electrons is not even!                   3
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+  current input line : 
+     0: 
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ There is an error in the input file
+ ------------------------------------------------------------------------
+ For more information see the NWChem manual at 
+ http://www.nwchem-sw.org/index.php/NWChem_Documentation
+
+
+ For further details see manual section: 
+                                                                                
+                                                                                
+                                                                                
+                   
+3:3:scf: no. of closed-shell electrons is not even!:: 3
+(rank:3 hostname:condo054 pid:27881):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 3:: Inappropriate ioctl for device
+application called MPI_Abort(comm=0x84000004, 3) - process 3
+In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 3)
 srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-srun: error: condo185: tasks 0-1,3: Exited with exit code 3
-srun: error: condo185: task 2: Killed
+slurmstepd: error: *** STEP 289089.0 ON condo054 CANCELLED AT 2018-05-17T12:30:29 ***
+srun: error: condo054: tasks 0-3: Exited with exit code 3

@@ -1,1 +1,5 @@
-cat: /home/alolinco/nwchem-jobs/tom-fe/tomfebn_opt: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/289170/*hess’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/289170/*movecs’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/289170/ecce*’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/289170/*log’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/289170/*out’: No such file or directory

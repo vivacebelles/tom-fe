@@ -1,5 +1,450 @@
-export PBS_NODEFILE=/scratch/alolinco/289170/TS6DYk1DIb
-export TMPDIR=/scratch/alolinco/289170
+Thu May 17 16:38:21 CDT 2018
+pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4
+
+* Begin Debugging Info
+** Submission file
+	#!/bin/bash
+	#SBATCH --job-name=tomfebn_opt
+	#SBATCH --output=tomfebn_opt.stdout
+	#SBATCH --error=tomfebn_opt.stderr
+	#SBATCH --nodes=1
+	#SBATCH --ntasks-per-node=4
+	#SBATCH --time=48:00:00
+	source /work/LAS/twindus-lab/nwchem/6.6/environment
+	TMPDIR=${TMPDIR:-/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4}
+	cat << EOF_print_debug_info
+	$(printf "%s\n" "$(date)")
+	$(printf "pwd = %s\n" "$PWD")
+	
+	* Begin Debugging Info
+	** Submission file
+	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/tomfebn_opt.sub | sed s/\^/\\t/)
+	
+	** Working Directory
+	TMPDIR=$TMPDIR: $([ -d $TMPDIR ] && printf "exists\n" || printf "does not exist\n")
+	
+	** Node List
+	$(cat ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	
+	** PATH
+	$(printf "%s\n" "$PATH" | sed s/:/\\n/g)
+	
+	** LD_LIBRARY_PATH
+	$(printf "%s\n" "$LD_LIBRARY_PATH" | sed s/:/\\n/g)
+	
+	** env
+	$(env)
+	
+	** jobfile
+	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/tomfebn_opt.nw | sed s/\^/\\t/)
+	
+	* Begin run output
+	EOF_print_debug_info
+	# Print node information and copy files for job
+	cat >> /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/tomfebn_opt.nodes << EOF_jobinfo
+	===$(date +"%Y-%m-%d-%r") run nodes===
+	$(uniq ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	Working directory $TMPDIR
+	EOF_jobinfo
+	
+	ulimit -s unlimited
+	ulimit -c unlimited
+	ulimit -l unlimited
+	cd $TMPDIR
+	cp -v /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/{tomfebn_opt.nw,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
+	printf "Starting %s at %s.\n" "$(which nwchem)" "$(date)"
+	export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
+	export ARMCI_DEFAULT_SHMMAX=32768
+	srun -N 1 -n 4 nwchem tomfebn_opt.nw |& tee /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/tomfebn_opt.out
+	printf "%s: nwchem finished with status $?\n" "$(date)"
+	cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4
+
+** Working Directory
+TMPDIR=/scratch/alolinco/289173: exists
+
+** Node List
+condo007
+condo007
+condo007
+condo007
+
+** PATH
+/work/LAS/twindus-lab/nwchem/6.6-intel/bin
+/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64
+/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64
+/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin
+/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin
+/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin
+/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin
+/usr/lib64/qt-3.3/bin
+/usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
+/home/alolinco/.local/bin
+/home/alolinco/bin
+
+** LD_LIBRARY_PATH
+/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7
+/shared/hpc/intel/17.4/debugger_2017/iga/lib
+/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+
+** env
+MKLROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl
+CPLUS_INCLUDE_PATH=/shared/hpc/intel/17.4//clck/2017.2.019/include
+SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+SLURM_NODELIST=condo007
+MPS_STAT_DIR_POSTFIX=%D-%T
+MPS_INTEL_LIBITTNOTIFY64=libmps.so
+SLURM_JOB_NAME=tomfebn_opt
+MANPATH=/shared/hpc/intel/17.4/itac/2017.3.030/man:/shared/hpc/intel/17.4/man/common:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/man:/usr/share/lmod/lmod/share/man::
+XDG_SESSION_ID=534072
+VT_MPI=impi4
+SLURMD_NODENAME=condo007
+SLURM_TOPOLOGY_ADDR=condo007
+SLURM_NTASKS_PER_NODE=4
+HOSTNAME=condo007
+SLURM_PRIO_PROCESS=0
+SELINUX_ROLE_REQUESTED=
+IPPROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp
+INTEL_LICENSE_FILE=/shared/hpc/intel/17.4/licenses
+SLURM_NODE_ALIASES=(null)
+CLCK_ROOT=/shared/hpc/intel/17.4//clck/2017.2.019
+TERM=xterm-256color
+SHELL=/bin/bash
+MPS_LD_PRELOAD=libmps.so
+SLURM_JOB_QOS=normal
+HISTSIZE=1000
+GDBSERVER_MIC=/shared/hpc/intel/17.4/debugger_2017/gdb/targets/mic/bin/gdbserver
+LMOD_DEFAULT_MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+MODULEPATH_ROOT=/usr/share/modulefiles
+TMPDIR=/scratch/alolinco/289173
+SSH_CLIENT=10.25.147.217 63284 22
+LIBRARY_PATH=/shared/hpc/intel/17.4/clck/2017.2.019/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+SELINUX_USE_CURRENT_RANGE=
+LMOD_PKG=/usr/share/lmod/lmod
+QTDIR=/usr/lib64/qt-3.3
+ADVISOR_2017_DIR=/shared/hpc/intel/17.4/advisor_2017.1.3.510716
+LMOD_VERSION=6.5.1
+QTINC=/usr/lib64/qt-3.3/include
+MIC_LD_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+SSH_TTY=/dev/pts/128
+VTUNE_AMPLIFIER_XE_2017_DIR=/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739
+QT_GRAPHICSSYSTEM_CHECKED=1
+SLURM_NNODES=1
+USER=alolinco
+NWCHEM_TOP=/work/LAS/twindus-lab/nwchem/6.6-intel/
+LD_LIBRARY_PATH=/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/debugger_2017/iga/lib:/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+LMOD_sys=Linux
+MPS_STAT_ENABLE_IDLE_VAL=1
+MIC_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+CPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/include
+SLURM_JOBID=289173
+SLURM_NTASKS=4
+NWCHEM_BASIS_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/
+LMOD_PREPEND_BLOCK=normal
+NLSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64/locale/%l_%t/%N:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/share/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64/share/locale/%l_%t/%N
+MPS_STAT_LEVEL=5
+VT_ADD_LIBS=-ldwarf -lelf -lvtunwind -lm -lpthread
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MSxiYXNlTXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXt9LGluYWN0aXZlPXt9LG1UPXtpbnRlbD17WyJGTiJdPSIvZXRjL21vZHVsZWZpbGVzL2ludGVsLzE3LjQiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNy40IixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJp
+SLURM_TASKS_PER_NODE=4
+MAIL=/var/spool/mail/alolinco
+PATH=/work/LAS/twindus-lab/nwchem/6.6-intel/bin:/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64:/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64:/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin:/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin:/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/alolinco/.local/bin:/home/alolinco/bin
+NWCHEM_NWPW_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraryps/
+MPS_KMP_FORKJOIN_FRAMES_MODE=3
+SLURM_JOB_ID=289173
+TBBROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb
+LMOD_SETTARG_CMD=:
+F90=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_JOB_USER=alolinco
+PWD=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4
+_LMFILES_=/etc/modulefiles/intel/17.4
+GDB_CROSS=/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin/gdb-mic
+LANG=en_US.UTF-8
+MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+VT_LIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/lib
+LOADEDMODULES=intel/17.4
+_ModuleTable_Sz_=2
+SLURM_JOB_UID=369342
+SLURM_NODEID=0
+MPS_STAT_ENABLE_IDLE=I_MPI_PVAR_IDLE
+F77=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_SUBMIT_DIR=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4
+SELINUX_LEVEL_REQUESTED=
+VT_ROOT=/shared/hpc/intel/17.4//itac/2017.3.030
+SLURM_TASK_PID=13504
+SLURM_NPROCS=4
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+MPS_TOOL_ROOT=/shared/hpc/intel/17.4/itac/2017.3.030
+DAALROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal
+SLURM_CPUS_ON_NODE=4
+MPM_LAUNCHER=/shared/hpc/intel/17.4/debugger_2017/mpm/mic/bin/start_mpm.sh
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+HISTCONTROL=ignoredups
+KRB5CCNAME=KEYRING:persistent:369342
+INTEL_PYTHONHOME=/shared/hpc/intel/17.4/debugger_2017/python/intel64/
+SLURM_JOB_NODELIST=condo007
+SPCE=/work/LAS/twindus-lab/nwchem/6.6-intel/data/solvents/spce.rst
+SHLVL=3
+HOME=/home/alolinco
+SLURM_LOCALID=0
+_ModuleTable002_=bnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsWyJ2ZXJzaW9uIl09Mix9
+SLURM_JOB_GID=101
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_CLUSTER_NAME=condo2017
+AMBER_1=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_s/
+VT_SLIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/slib
+VT_ARCH=intel64
+FC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=condo2017.its.iastate.edu
+AMBER_2=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_q/
+SLURM_JOB_PARTITION=short_1node
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+AMBER_3=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_x/
+PYTHONPATH=/shared/hpc/intel/17.4/advisor_2017.1.3.510716/pythonapi
+LMOD_arch=x86_64
+LOGNAME=alolinco
+AMBER_4=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_u/
+QTLIB=/usr/lib64/qt-3.3/lib
+CLASSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib/mpi.jar:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/daal.jar
+SLURM_JOB_ACCOUNT=its-hpc-condo-las
+XDG_DATA_DIRS=/home/alolinco/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+SSH_CONNECTION=10.25.147.217 63284 10.24.107.19 22
+MPS_STAT_MESSAGES=1
+SLURM_JOB_NUM_NODES=1
+MODULESHOME=/usr/share/lmod/lmod
+CHARMM_X=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_x/
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+INSPECTOR_2017_DIR=/shared/hpc/intel/17.4/inspector_2017.1.3.510645
+INFOPATH=/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/info
+LMOD_FULL_SETTARG_SUPPORT=no
+CC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/icc
+XDG_RUNTIME_DIR=/run/user/369342
+CHARMM_S=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_s/
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+PBS_NODEFILE=/scratch/alolinco/289173/Gul9AuYWOk
+SLURM_MEM_PER_NODE=128835
+LMOD_COLORIZE=yes
+I_MPI_ROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi
+BASH_FUNC_module()=() {  eval $($LMOD_CMD bash "$@");
+ [ $? = 0 ] && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+BASH_FUNC_ml()=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+_=/usr/bin/env
+
+** jobfile
+	start tomfe_opt1
+	title "ToMFeBn"
+	
+	geometry units angstroms print xyz autosym
+	  Fe        9.54641        2.32429        8.53473
+	   O        6.39906       -0.19032        7.56439
+	   O       10.58792       -1.68609        8.08785
+	   O        9.75113        0.95627        4.60053
+	   N        7.69889        1.38461        8.46857
+	   N       10.48900        0.45274        8.66255
+	   N        9.69399        2.20291        6.44914
+	   C       10.30390        3.98613        9.50507
+	   C        9.28432        4.50607       10.46918
+	   C        9.15643        3.97025       11.75032
+	   H        9.73768        3.26652       12.01234
+	   C        8.22126        4.42418       12.64495
+	   H        8.16369        4.03489       13.50918
+	   C        7.35983        5.45048       12.28884
+	   H        6.70924        5.77058       12.90263
+	   C        7.46508        5.99408       11.03520
+	   H        6.88519        6.70242       10.78187
+	   C        8.39922        5.53076       10.13478
+	   H        8.44239        5.91754        9.26766
+	   C        6.39817        1.54367        9.18948
+	   C        6.58777        1.08385       10.62408
+	   H        6.89168        0.15216       10.63131
+	   H        7.25584        1.64901       11.06270
+	   H        5.73446        1.15586       11.10468
+	   C        5.48459        0.61689        8.37882
+	   H        4.87321        1.14024        7.80411
+	   H        4.94727        0.04046        8.97813
+	   C        7.61684        0.39718        7.65356
+	   C       10.03834       -0.47642        7.89966
+	   C       11.63616       -1.52924        9.10263
+	   H       11.52662       -2.19373        9.82933
+	   H       12.53494       -1.64024        8.70164
+	   C       11.45061       -0.12407        9.62522
+	   C       10.77094       -0.09285       11.00190
+	   H       10.67163        0.83519       11.29867
+	   H        9.88644       -0.51270       10.93821
+	   H       11.31015       -0.58394       11.64754
+	   C       12.76666        0.65719        9.62956
+	   H       13.11936        0.70627        8.71611
+	   H       12.60647        1.56243        9.97410
+	   H       13.41543        0.20074       10.20571
+	   C        9.44529        1.06842        5.92076
+	   C       10.16531        2.30202        4.15177
+	   H       11.02519        2.26063        3.66103
+	   H        9.47816        2.70593        3.56548
+	   C       10.31723        3.10745        5.45897
+	   C        9.55147        4.41371        5.40251
+	   H        8.60205        4.22952        5.24038
+	   H        9.64699        4.88984        6.25371
+	   H        9.90902        4.96608        4.67436
+	   C       11.77262        3.33299        5.83390
+	   H       11.81860        3.77646        6.70971
+	   H       12.23735        2.47057        5.87733
+	   H       12.19802        3.90841        5.15931
+	   C        8.39572       -1.48964        5.88602
+	   C        8.41530       -2.80233        6.38979
+	   H        8.73098       -2.95068        7.27284
+	   C        7.98475       -3.88735        5.63558
+	   H        8.01691       -4.76192        6.00183
+	   C        7.50588       -3.69186        4.33707
+	   H        7.23084       -4.43083        3.80724
+	   C        7.44064       -2.41480        3.83764
+	   H        7.09091       -2.26518        2.96617
+	   C        7.88262       -1.33915        4.59619
+	   H        7.83259       -0.46668        4.22415
+	   C        5.94502        2.99206        9.13882
+	   H        6.56517        3.54762        9.65562
+	   H        5.93621        3.29888        8.20800
+	   H        5.04329        3.06572        9.52533
+	   B        8.86188       -0.21760        6.77196
+	   H       11.13114        3.74222        9.99147
+	   H       10.52876        4.68806        8.84350
+	  Fe        2.98892        2.34869        1.71789
+	   O        6.51493        1.58016       -0.37349
+	   O        4.91669        5.84337        0.66156
+	   O        6.62417        2.97468        3.70735
+	   N        4.42881        1.57305        0.39809
+	   N        3.40845        4.27065        1.09585
+	   N        4.51484        2.55159        3.16160
+	   C        1.24245        1.34811        2.19314
+	   C        0.07883        1.99693        1.53592
+	   C       -0.15866        1.83526        0.16358
+	   H        0.41408        1.27784       -0.35032
+	   C       -1.23015        2.48563       -0.45310
+	   H       -1.37860        2.36045       -1.38248
+	   C       -2.07042        3.29797        0.25912
+	   H       -2.79552        3.73664       -0.17082
+	   C       -1.84560        3.47166        1.60831
+	   H       -2.42487        4.03073        2.11063
+	   C       -0.80114        2.84945        2.23223
+	   H       -0.66343        2.99817        3.16015
+	   C        4.55618        0.25916       -0.29531
+	   C        3.37624        0.03376       -1.21745
+	   H        2.55817       -0.04874       -0.68617
+	   H        3.29544        0.79082       -1.83558
+	   H        3.51366       -0.79102       -1.72846
+	   C        5.86161        0.45196       -1.05966
+	   H        5.68554        0.66954       -2.00929
+	   H        6.42174       -0.36273       -1.01333
+	   C        5.56257        2.18270        0.35756
+	   C        4.65141        4.56316        0.97714
+	   C        3.63077        6.52086        0.49219
+	   H        3.59363        7.34261        1.04518
+	   H        3.48752        6.76866       -0.45455
+	   C        2.57634        5.51481        0.95253
+	   C        1.48429        5.28810       -0.08396
+	   H        0.84104        4.63145        0.25768
+	   H        1.02596        6.13437       -0.26057
+	   H        1.88664        4.94290       -0.91200
+	   C        1.99878        5.85749        2.29303
+	   H        1.32612        5.18956        2.53912
+	   H        2.71268        5.86764        2.96328
+	   H        1.58270        6.74305        2.25105
+	   C        7.31498        4.23086        0.92358
+	   C        7.81564        4.28692       -0.37928
+	   H        7.33045        3.86992       -1.08137
+	   C        9.01402        4.94326       -0.67749
+	   H        9.34961        4.93925       -1.56632
+	   C        9.70983        5.60104        0.32282
+	   H       10.51901        6.05693        0.12160
+	   C        9.22976        5.58971        1.59817
+	   H        9.69595        6.04794        2.28724
+	   C        8.04996        4.90210        1.89059
+	   H        7.73707        4.89487        2.78667
+	   C        5.64176        3.00203        2.77219
+	   C        6.04551        2.40928        4.90888
+	   H        6.50589        1.56818        5.15208
+	   H        6.12419        3.04501        5.66308
+	   C        4.57694        2.14176        4.58316
+	   C        3.61871        2.97121        5.39093
+	   H        3.85855        3.91878        5.31276
+	   H        2.70942        2.84286        5.05074
+	   H        3.65067        2.69526        6.33044
+	   C        4.21734        0.65408        4.67436
+	   H        3.33769        0.50411        4.27048
+	   H        4.88579        0.12488        4.19810
+	   H        4.18959        0.38104        5.61387
+	   C        4.66598       -0.83465        0.76434
+	   H        5.43166       -0.64862        1.34629
+	   H        3.84842       -0.85358        1.29996
+	   H        4.79068       -1.70176        0.32571
+	   B        5.89541        3.53807        1.23192
+	   H        1.30968        0.40569        1.89493
+	   H        1.11572        1.35213        3.17463
+	end
+	
+	basis
+	 Fe library "Stuttgart RSC 1997 ECP"
+	 B library 6-311+g*
+	 C library 6-311+g*
+	 O library 6-311+g*
+	 N library 6-311+g*
+	 H library 6-311+g*
+	end
+	
+	ecp
+	 Fe library "Stuttgart RSC 1997 ECP"
+	end
+	
+	scf
+	 quartet
+	 rohf
+	 direct
+	 maxiter 200
+	 thresh 1.0e-6
+	 tol2e 1.0e-9
+	end
+	
+	task scf energy
+	
+	dft
+	 direct
+	 grid fine
+	 xc pbe0
+	 rodft
+	 cgmin
+	 mult 4
+	 maxiter 200
+	end
+	
+	driver
+	 maxiter 200
+	end
+	
+	task dft optimize
+
+* Begin run output
+‘/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_job4/tomfebn_opt.nw’ -> ‘/scratch/alolinco/289173/tomfebn_opt.nw’
+Starting /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem at Thu May 17 16:38:21 CDT 2018.
+export PBS_NODEFILE=/scratch/alolinco/289173/apPRLzdzu5
+export TMPDIR=/scratch/alolinco/289173
  argument  1 = tomfebn_opt.nw
                                          
                                          
@@ -38,9 +483,9 @@ export TMPDIR=/scratch/alolinco/289170
            Job information
            ---------------
 
-    hostname        = condo185
+    hostname        = condo007
     program         = /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem
-    date            = Thu May 17 16:26:35 2018
+    date            = Thu May 17 16:38:22 2018
 
     compiled        = Tue_Oct_24_08:26:58_2017
     source          = /home/weverett/build/nwchem/nwchem-6.6-intel
@@ -59,10 +504,10 @@ export TMPDIR=/scratch/alolinco/289170
            Memory information
            ------------------
 
-    heap     =   13107196 doubles =    100.0 Mbytes
-    stack    =   13107201 doubles =    100.0 Mbytes
+    heap     =   13107198 doubles =    100.0 Mbytes
+    stack    =   13107195 doubles =    100.0 Mbytes
     global   =   26214400 doubles =    200.0 Mbytes (distinct from heap & stack)
-    total    =   52428797 doubles =    400.0 Mbytes
+    total    =   52428793 doubles =    400.0 Mbytes
     verify   = yes
     hardfail = no 
 
@@ -1665,6 +2110,7 @@ export TMPDIR=/scratch/alolinco/289170
    58 C                |  60 C                |  62 C                |   118.97
    61 H                |  60 C                |  62 C                |   120.46
    60 C                |  62 C                |  63 H                |   119.82
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
    60 C                |  62 C                |  64 C                |   120.45
    63 H                |  62 C                |  64 C                |   119.73
    55 C                |  64 C                |  62 C                |   122.56
@@ -2070,7 +2516,7 @@ export TMPDIR=/scratch/alolinco/289170
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
   current input line : 
-   174: task scf energy
+   173: task scf energy
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
  There is an error in the input file
@@ -2085,32 +2531,25 @@ export TMPDIR=/scratch/alolinco/289170
                                                                                 
                    
 0:0:scf: no. of closed-shell electrons is not even!:: 3
-(rank:0 hostname:condo185 pid:18823):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:0 hostname:condo007 pid:13577):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 0:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000007, 3) - process 0
+ scf: no. of closed-shell electrons is not even!                   3
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ scf: no. of closed-shell electrons is not even!                   3
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+  current input line : 
+     0: 
+ ------------------------------------------------------------------------
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
- scf: no. of closed-shell electrons is not even!                   3
- ------------------------------------------------------------------------
- ------------------------------------------------------------------------
   current input line : 
      0: 
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
  There is an error in the input file
  ------------------------------------------------------------------------
- scf: no. of closed-shell electrons is not even!                   3
- ------------------------------------------------------------------------
- ------------------------------------------------------------------------
-  current input line : 
-     0: 
- ------------------------------------------------------------------------
- ------------------------------------------------------------------------
- There is an error in the input file
- ------------------------------------------------------------------------
- For more information see the NWChem manual at 
- http://www.nwchem-sw.org/index.php/NWChem_Documentation
-
-
  For more information see the NWChem manual at 
  http://www.nwchem-sw.org/index.php/NWChem_Documentation
 
@@ -2120,15 +2559,22 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
                                                                                 
                                                                                 
                    
-1:1:scf: no. of closed-shell electrons is not even!:: 3
-(rank:1 hostname:condo185 pid:18824):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+ ------------------------------------------------------------------------
+ There is an error in the input file
+ ------------------------------------------------------------------------
+ For more information see the NWChem manual at 
+ http://www.nwchem-sw.org/index.php/NWChem_Documentation
+
+
  For further details see manual section: 
                                                                                 
                                                                                 
                                                                                 
                    
 3:3:scf: no. of closed-shell electrons is not even!:: 3
-(rank:3 hostname:condo185 pid:18826):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:3 hostname:condo007 pid:13580):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+1:1:scf: no. of closed-shell electrons is not even!:: 3
+(rank:1 hostname:condo007 pid:13578):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 1:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 1
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 1)
@@ -2154,11 +2600,10 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 3)
                                                                                 
                    
 2:2:scf: no. of closed-shell electrons is not even!:: 3
-(rank:2 hostname:condo185 pid:18825):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:2 hostname:condo007 pid:13579):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 2:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 2
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 2)
-slurmstepd: error: *** STEP 289170.0 ON condo185 CANCELLED AT 2018-05-17T16:26:37 ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-srun: error: condo185: tasks 0-1,3: Exited with exit code 3
-srun: error: condo185: task 2: Killed
+slurmstepd: error: *** STEP 289173.0 ON condo007 CANCELLED AT 2018-05-17T16:38:23 ***
+srun: error: condo007: tasks 0-3: Exited with exit code 3
+Thu May 17 16:38:24 CDT 2018: nwchem finished with status 0

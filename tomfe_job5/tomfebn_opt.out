@@ -1,5 +1,5 @@
-export PBS_NODEFILE=/scratch/alolinco/289170/TS6DYk1DIb
-export TMPDIR=/scratch/alolinco/289170
+export PBS_NODEFILE=/scratch/alolinco/289177/rflih9JxWk
+export TMPDIR=/scratch/alolinco/289177
  argument  1 = tomfebn_opt.nw
                                          
                                          
@@ -38,9 +38,9 @@ export TMPDIR=/scratch/alolinco/289170
            Job information
            ---------------
 
-    hostname        = condo185
+    hostname        = condo147
     program         = /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem
-    date            = Thu May 17 16:26:35 2018
+    date            = Thu May 17 16:40:28 2018
 
     compiled        = Tue_Oct_24_08:26:58_2017
     source          = /home/weverett/build/nwchem/nwchem-6.6-intel
@@ -59,10 +59,10 @@ export TMPDIR=/scratch/alolinco/289170
            Memory information
            ------------------
 
-    heap     =   13107196 doubles =    100.0 Mbytes
-    stack    =   13107201 doubles =    100.0 Mbytes
+    heap     =   13107194 doubles =    100.0 Mbytes
+    stack    =   13107199 doubles =    100.0 Mbytes
     global   =   26214400 doubles =    200.0 Mbytes (distinct from heap & stack)
-    total    =   52428797 doubles =    400.0 Mbytes
+    total    =   52428793 doubles =    400.0 Mbytes
     verify   = yes
     hardfail = no 
 
@@ -1282,6 +1282,7 @@ export TMPDIR=/scratch/alolinco/289170
  C                    -4.25337624     0.54688511    -2.07725539
  H                    -4.42308842    -0.35972852    -1.84615655
  C                    -3.27780913     1.26053596    -1.39407266
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
  H                    -2.79832434     0.82731033    -0.69799037
  C                     3.07343530     2.92527013    -1.59285773
  H                     3.46347644     3.63666768    -1.04322457
@@ -2070,7 +2071,7 @@ export TMPDIR=/scratch/alolinco/289170
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
   current input line : 
-   174: task scf energy
+   173: task scf energy
  ------------------------------------------------------------------------
  ------------------------------------------------------------------------
  There is an error in the input file
@@ -2085,7 +2086,7 @@ export TMPDIR=/scratch/alolinco/289170
                                                                                 
                    
 0:0:scf: no. of closed-shell electrons is not even!:: 3
-(rank:0 hostname:condo185 pid:18823):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:0 hostname:condo147 pid:2997):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 0:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000007, 3) - process 0
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
@@ -2111,6 +2112,11 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
  http://www.nwchem-sw.org/index.php/NWChem_Documentation
 
 
+ For further details see manual section: 
+                                                                                
+                                                                                
+                                                                                
+                   
  For more information see the NWChem manual at 
  http://www.nwchem-sw.org/index.php/NWChem_Documentation
 
@@ -2121,14 +2127,9 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000007, 3) - process 0)
                                                                                 
                    
 1:1:scf: no. of closed-shell electrons is not even!:: 3
-(rank:1 hostname:condo185 pid:18824):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
- For further details see manual section: 
-                                                                                
-                                                                                
-                                                                                
-                   
+(rank:1 hostname:condo147 pid:2998):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 3:3:scf: no. of closed-shell electrons is not even!:: 3
-(rank:3 hostname:condo185 pid:18826):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:3 hostname:condo147 pid:3000):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 1:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 1
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 1)
@@ -2154,11 +2155,10 @@ In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 3)
                                                                                 
                    
 2:2:scf: no. of closed-shell electrons is not even!:: 3
-(rank:2 hostname:condo185 pid:18825):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+(rank:2 hostname:condo147 pid:2999):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
 Last System Error Message from Task 2:: Inappropriate ioctl for device
 application called MPI_Abort(comm=0x84000004, 3) - process 2
 In: PMI_Abort(3, application called MPI_Abort(comm=0x84000004, 3) - process 2)
-slurmstepd: error: *** STEP 289170.0 ON condo185 CANCELLED AT 2018-05-17T16:26:37 ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-srun: error: condo185: tasks 0-1,3: Exited with exit code 3
-srun: error: condo185: task 2: Killed
+slurmstepd: error: *** STEP 289177.0 ON condo147 CANCELLED AT 2018-05-17T16:40:29 ***
+srun: error: condo147: tasks 0,2-3: Exited with exit code 3
+srun: error: condo147: task 1: Killed

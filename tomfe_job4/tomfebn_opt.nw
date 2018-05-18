@@ -1,7 +1,6 @@
 start tomfe_opt1
 title "ToMFeBn"
 
-charge 0
 geometry units angstroms print xyz autosym
   Fe        9.54641        2.32429        8.53473
    O        6.39906       -0.19032        7.56439
@@ -164,6 +163,7 @@ end
 
 scf
  quartet
+ rohf
  direct
  maxiter 200
  thresh 1.0e-6
