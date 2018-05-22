@@ -1,0 +1,55 @@
+#!/bin/bash
+#SBATCH --job-name=tomfebn_opt
+#SBATCH --output=tomfebn_opt.stdout
+#SBATCH --error=tomfebn_opt.stderr
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --time=24:00:00
+source /work/LAS/twindus-lab/nwchem/6.6/environment
+TMPDIR=${TMPDIR:-/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2}
+cat << EOF_print_debug_info
+$(printf "%s\n" "$(date)")
+$(printf "pwd = %s\n" "$PWD")
+
+* Begin Debugging Info
+** Submission file
+$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.sub | sed s/\^/\\t/)
+
+** Working Directory
+TMPDIR=$TMPDIR: $([ -d $TMPDIR ] && printf "exists\n" || printf "does not exist\n")
+
+** Node List
+$(cat ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+
+** PATH
+$(printf "%s\n" "$PATH" | sed s/:/\\n/g)
+
+** LD_LIBRARY_PATH
+$(printf "%s\n" "$LD_LIBRARY_PATH" | sed s/:/\\n/g)
+
+** env
+$(env)
+
+** jobfile
+$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.nw | sed s/\^/\\t/)
+
+* Begin run output
+EOF_print_debug_info
+# Print node information and copy files for job
+cat >> /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.nodes << EOF_jobinfo
+===$(date +"%Y-%m-%d-%r") run nodes===
+$(uniq ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+Working directory $TMPDIR
+EOF_jobinfo
+
+ulimit -s unlimited
+ulimit -c unlimited
+ulimit -l unlimited
+cd $TMPDIR
+cp -v /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/{tomfebn_opt.nw,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
+printf "Starting %s at %s.\n" "$(which nwchem)" "$(date)"
+export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
+export ARMCI_DEFAULT_SHMMAX=32768
+srun -N 1 -n 4 nwchem tomfebn_opt.nw |& tee /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.out
+printf "%s: nwchem finished with status $?\n" "$(date)"
+cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2

@@ -179,7 +179,7 @@ dft
  xc pbe0
  rodft
  cgmin
- mult 4
+ mult 3
  maxiter 200
 end
 

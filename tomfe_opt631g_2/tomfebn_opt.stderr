@@ -1,0 +1,25 @@
+cat: Can't: No such file or directory
+cat: locate: No such file or directory
+cat: Slurm.pm: No such file or directory
+cat: in: No such file or directory
+cat: @INC: No such file or directory
+cat: (@INC: No such file or directory
+cat: contains:: No such file or directory
+cat: /usr/lib64/perl5: Is a directory
+cat: /usr/local/lib64/perl5: No such file or directory
+cat: /usr/local/share/perl5: No such file or directory
+cat: /usr/lib64/perl5/vendor_perl: Is a directory
+cat: /usr/share/perl5/vendor_perl: Is a directory
+cat: /usr/share/perl5: Is a directory
+cat: .): No such file or directory
+cat: at: No such file or directory
+cat: line: No such file or directory
+cat: 18.: No such file or directory
+cat: BEGIN: No such file or directory
+cat: failed--compilation: No such file or directory
+cat: aborted: No such file or directory
+cat: at: No such file or directory
+cat: line: No such file or directory
+cat: 18.: No such file or directory
+uniq: extra operand ‘Slurm.pm’
+Try 'uniq --help' for more information.
