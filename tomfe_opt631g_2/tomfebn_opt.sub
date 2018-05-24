@@ -4,7 +4,7 @@
 #SBATCH --error=tomfebn_opt.stderr
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 source /work/LAS/twindus-lab/nwchem/6.6/environment
 TMPDIR=${TMPDIR:-/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2}
 cat << EOF_print_debug_info

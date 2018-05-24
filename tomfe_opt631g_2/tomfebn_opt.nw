@@ -152,11 +152,11 @@ end
 
 basis
  Fe library "Stuttgart RSC 1997 ECP"
- B library 6-31
- C library 6-31
- O library 6-31
- N library 6-31
- H library 6-31
+ B library 6-31g
+ C library 6-31g
+ O library 6-31g
+ N library 6-31g
+ H library 6-31g
 end
 
 ecp
