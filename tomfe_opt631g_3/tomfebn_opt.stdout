@@ -1,5 +1,5 @@
-Thu May 24 15:40:32 CDT 2018
-pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
+Thu May 24 16:25:58 CDT 2018
+pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3
 
 * Begin Debugging Info
 ** Submission file
@@ -9,16 +9,16 @@ pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
 	#SBATCH --error=tomfebn_opt.stderr
 	#SBATCH --nodes=1
 	#SBATCH --ntasks-per-node=4
-	#SBATCH --time=48:00:00
+	#SBATCH --time=24:00:00
 	source /work/LAS/twindus-lab/nwchem/6.6/environment
-	TMPDIR=${TMPDIR:-/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2}
+	TMPDIR=${TMPDIR:-/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3}
 	cat << EOF_print_debug_info
 	$(printf "%s\n" "$(date)")
 	$(printf "pwd = %s\n" "$PWD")
 	
 	* Begin Debugging Info
 	** Submission file
-	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.sub | sed s/\^/\\t/)
+	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.sub | sed s/\^/\\t/)
 	
 	** Working Directory
 	TMPDIR=$TMPDIR: $([ -d $TMPDIR ] && printf "exists\n" || printf "does not exist\n")
@@ -36,12 +36,12 @@ pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
 	$(env)
 	
 	** jobfile
-	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.nw | sed s/\^/\\t/)
+	$(cat /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.nw | sed s/\^/\\t/)
 	
 	* Begin run output
 	EOF_print_debug_info
 	# Print node information and copy files for job
-	cat >> /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.nodes << EOF_jobinfo
+	cat >> /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.nodes << EOF_jobinfo
 	===$(date +"%Y-%m-%d-%r") run nodes===
 	$(uniq ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
 	Working directory $TMPDIR
@@ -51,22 +51,22 @@ pwd = /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
 	ulimit -c unlimited
 	ulimit -l unlimited
 	cd $TMPDIR
-	cp -v /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/{tomfebn_opt.nw,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
+	cp -v /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/{tomfebn_opt.nw,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
 	printf "Starting %s at %s.\n" "$(which nwchem)" "$(date)"
 	export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
 	export ARMCI_DEFAULT_SHMMAX=32768
-	srun -N 1 -n 4 nwchem tomfebn_opt.nw |& tee /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.out
+	srun -N 1 -n 4 nwchem tomfebn_opt.nw |& tee /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.out
 	printf "%s: nwchem finished with status $?\n" "$(date)"
-	cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
+	cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3
 
 ** Working Directory
-TMPDIR=/scratch/alolinco/292397: exists
+TMPDIR=/scratch/alolinco/292435: exists
 
 ** Node List
-condo027
-condo027
-condo027
-condo027
+condo119
+condo119
+condo119
+condo119
 
 ** PATH
 /work/LAS/twindus-lab/nwchem/6.6-intel/bin
@@ -107,17 +107,17 @@ condo027
 MKLROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl
 CPLUS_INCLUDE_PATH=/shared/hpc/intel/17.4//clck/2017.2.019/include
 SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
-SLURM_NODELIST=condo027
+SLURM_NODELIST=condo119
 MPS_STAT_DIR_POSTFIX=%D-%T
 MPS_INTEL_LIBITTNOTIFY64=libmps.so
 SLURM_JOB_NAME=tomfebn_opt
 MANPATH=/shared/hpc/intel/17.4/itac/2017.3.030/man:/shared/hpc/intel/17.4/man/common:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/man:/usr/share/lmod/lmod/share/man::
 XDG_SESSION_ID=12749
 VT_MPI=impi4
-SLURMD_NODENAME=condo027
-SLURM_TOPOLOGY_ADDR=condo027
+SLURMD_NODENAME=condo119
+SLURM_TOPOLOGY_ADDR=condo119
 SLURM_NTASKS_PER_NODE=4
-HOSTNAME=condo027
+HOSTNAME=condo119
 SLURM_PRIO_PROCESS=0
 SELINUX_ROLE_REQUESTED=
 IPPROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp
@@ -134,7 +134,7 @@ GDBSERVER_MIC=/shared/hpc/intel/17.4/debugger_2017/gdb/targets/mic/bin/gdbserver
 LMOD_DEFAULT_MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
 SLURM_TOPOLOGY_ADDR_PATTERN=node
 MODULEPATH_ROOT=/usr/share/modulefiles
-TMPDIR=/scratch/alolinco/292397
+TMPDIR=/scratch/alolinco/292435
 SSH_CLIENT=10.25.147.217 61931 22
 LIBRARY_PATH=/shared/hpc/intel/17.4/clck/2017.2.019/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
 SELINUX_USE_CURRENT_RANGE=
@@ -155,7 +155,7 @@ LMOD_sys=Linux
 MPS_STAT_ENABLE_IDLE_VAL=1
 MIC_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
 CPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/include
-SLURM_JOBID=292397
+SLURM_JOBID=292435
 SLURM_NTASKS=4
 NWCHEM_BASIS_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/
 LSCOLORS=Exfxcxdxbxegedabagacad
@@ -170,12 +170,12 @@ PATH=/work/LAS/twindus-lab/nwchem/6.6-intel/bin:/shared/hpc/intel/17.4/advisor_2
 SLURM_WORKING_CLUSTER=condo2017:172.16.253.4:6817:8192
 NWCHEM_NWPW_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraryps/
 MPS_KMP_FORKJOIN_FRAMES_MODE=3
-SLURM_JOB_ID=292397
+SLURM_JOB_ID=292435
 TBBROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb
 LMOD_SETTARG_CMD=:
 F90=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
 SLURM_JOB_USER=alolinco
-PWD=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
+PWD=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3
 _LMFILES_=/etc/modulefiles/intel/17.4
 GDB_CROSS=/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin/gdb-mic
 LANG=en_US.UTF-8
@@ -187,10 +187,10 @@ SLURM_JOB_UID=369342
 SLURM_NODEID=0
 MPS_STAT_ENABLE_IDLE=I_MPI_PVAR_IDLE
 F77=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
-SLURM_SUBMIT_DIR=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2
+SLURM_SUBMIT_DIR=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3
 SELINUX_LEVEL_REQUESTED=
 VT_ROOT=/shared/hpc/intel/17.4//itac/2017.3.030
-SLURM_TASK_PID=26466
+SLURM_TASK_PID=23312
 SLURM_NPROCS=4
 LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
 MPS_TOOL_ROOT=/shared/hpc/intel/17.4/itac/2017.3.030
@@ -202,7 +202,7 @@ ENVIRONMENT=BATCH
 HISTCONTROL=ignoredups
 KRB5CCNAME=KEYRING:persistent:369342
 INTEL_PYTHONHOME=/shared/hpc/intel/17.4/debugger_2017/python/intel64/
-SLURM_JOB_NODELIST=condo027
+SLURM_JOB_NODELIST=condo119
 SPCE=/work/LAS/twindus-lab/nwchem/6.6-intel/data/solvents/spce.rst
 SHLVL=3
 HOME=/home/alolinco
@@ -243,7 +243,7 @@ CC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/i
 XDG_RUNTIME_DIR=/run/user/369342
 CHARMM_S=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_s/
 LMOD_DIR=/usr/share/lmod/lmod/libexec
-PBS_NODEFILE=/scratch/alolinco/292397/Nc1MGAtQn7
+PBS_NODEFILE=/scratch/alolinco/292435/2m4bzW8Eh6
 SLURM_MEM_PER_NODE=128834
 LMOD_COLORIZE=yes
 I_MPI_ROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi
@@ -441,17 +441,16 @@ _=/usr/bin/env
 	end
 	
 	driver
-	 maxiter 200
+	 maxiter 400
 	end
 	
 	task dft optimize
 
 * Begin run output
-‘/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfebn_opt.nw’ -> ‘/scratch/alolinco/292397/tomfebn_opt.nw’
-‘/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_2/tomfe_opt1.db’ -> ‘/scratch/alolinco/292397/tomfe_opt1.db’
-Starting /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem at Thu May 24 15:40:32 CDT 2018.
-export PBS_NODEFILE=/scratch/alolinco/292397/C0pi3RI93Q
-export TMPDIR=/scratch/alolinco/292397
+‘/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.nw’ -> ‘/scratch/alolinco/292435/tomfebn_opt.nw’
+Starting /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem at Thu May 24 16:25:58 CDT 2018.
+export PBS_NODEFILE=/scratch/alolinco/292435/14p98gmOqp
+export TMPDIR=/scratch/alolinco/292435
  argument  1 = tomfebn_opt.nw
  
 
@@ -643,7 +642,7 @@ dft
 end
 
 driver
- maxiter 200
+ maxiter 400
 end
 
 task dft optimize
@@ -687,9 +686,9 @@ task dft optimize
            Job information
            ---------------
 
-    hostname        = condo027
+    hostname        = condo119
     program         = /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem
-    date            = Thu May 24 15:40:33 2018
+    date            = Thu May 24 16:25:59 2018
 
     compiled        = Tue_Oct_24_08:26:58_2017
     source          = /home/weverett/build/nwchem/nwchem-6.6-intel
@@ -708,8 +707,8 @@ task dft optimize
            Memory information
            ------------------
 
-    heap     =   13107196 doubles =    100.0 Mbytes
-    stack    =   13107201 doubles =    100.0 Mbytes
+    heap     =   13107200 doubles =    100.0 Mbytes
+    stack    =   13107197 doubles =    100.0 Mbytes
     global   =   26214400 doubles =    200.0 Mbytes (distinct from heap & stack)
     total    =   52428797 doubles =    400.0 Mbytes
     verify   = yes
@@ -2706,7 +2705,7 @@ task dft optimize
 
 
 
- Forming initial guess at       2.0s
+ Forming initial guess at       1.9s
 
  
       Superposition of Atomic Density Guess
@@ -2736,17 +2735,3 @@ task dft optimize
  Final Fock-matrix accuracy:          1.000E-09
  ----------------------------------------------
 
-
-              iter       energy          gnorm     gmax       time
-             ----- ------------------- --------- --------- --------
-                 1    -3229.6050310250  5.25D+00  7.83D-01    232.6
-                 2    -3231.0408359749  3.08D+00  5.82D-01    435.1
-                 3    -3231.6054912611  1.68D+00  3.90D-01    839.3
-                 4    -3231.8591587713  1.39D+00  3.24D-01   1039.5
-                 5    -3231.9512679698  4.84D-01  7.63D-02   1239.6
-                 6    -3231.9826470592  6.98D-02  1.60D-02   1910.2
-  ga_iter_lsolve: convergence stagnant ... aborting solve
-
- Disabled NR: increased maxiter to 210
-
-                 7    -3231.9839586579  8.25D-02  1.61D-02   2729.5
