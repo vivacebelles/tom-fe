@@ -28006,3 +28006,11 @@ ToMFeBn
  Grid integrated density:     540.000289363295
  Requested integration accuracy:   0.10E-06
                  2    -3250.3716603890  1.44D-01  1.35D-02  88134.7
+ Grid integrated density:     540.000289299080
+ Requested integration accuracy:   0.10E-06
+                 3    -3250.3739509303  1.80D-02  5.69D-03  88657.0
+ Grid integrated density:     540.000290079057
+ Requested integration accuracy:   0.10E-06
+ Grid integrated density:     540.000291043730
+ Requested integration accuracy:   0.10E-06
+                 4    -3250.3744606721  1.97D-02  5.46D-03  89981.3
