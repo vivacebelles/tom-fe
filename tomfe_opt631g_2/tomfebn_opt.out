@@ -27545,3 +27545,12 @@ ToMFeBn
  Record size in doubles =  12289        No. of grid_pts per rec  =   3070
  Max. records in memory =      0        Max. recs in file   =   6614157
 
+ Grid integrated density:     540.000288358361
+ Requested integration accuracy:   0.10E-06
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1    -3250.2900888032  8.75D-01  1.00D-01  87935.2
+ Grid integrated density:     540.000289363295
+ Requested integration accuracy:   0.10E-06
+                 2    -3250.3716603890  1.44D-01  1.35D-02  88134.7
