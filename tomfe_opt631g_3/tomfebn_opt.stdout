@@ -23408,3 +23408,23 @@ ToMFeBn
                  7    -3250.3616058192  1.12D-03  4.14D-04  83188.6
                  8    -3250.3616131542  1.96D-03  4.50D-04  84276.8
                  9    -3250.3616146317  5.92D-04  1.64D-04  85300.2
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 292435.0 ON condo119 CANCELLED AT 2018-05-25T16:26:12 DUE TO TIME LIMIT ***
+0:Terminate signal was sent, status=: 15
+(rank:0 hostname:condo119 pid:23376):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/signaltrap.c:SigTermHandler():477 cond:0
+Last System Error Message from Task 0:: Numerical result out of range
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+forrtl: error (78): process killed (SIGTERM)
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+
+Stack trace terminated abnormally.

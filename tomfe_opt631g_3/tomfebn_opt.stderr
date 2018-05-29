@@ -1,1 +1,2 @@
 tee: /work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt631g_3/tomfebn_opt.out: Stale file handle
+slurmstepd: error: *** JOB 292435 ON condo119 CANCELLED AT 2018-05-25T16:26:12 DUE TO TIME LIMIT ***
