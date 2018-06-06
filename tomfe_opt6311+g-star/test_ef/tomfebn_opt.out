@@ -914,3 +914,31 @@ task dft optimize
       -------------------------------------
  
  Sum of atomic energies:       -1621.05431509
+ 
+      Non-variational initial energy
+      ------------------------------
+
+ Total energy =   -1632.520761
+ 1-e energy   =  -11123.044091
+ 2-e energy   =    5022.138347
+ HOMO         =      -0.222730
+ LUMO         =      -0.218406
+ 
+
+ Starting SCF solution at     602.8s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-06
+ Maximum no. of iterations :          200
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1    -1616.1149084919  3.68D+00  1.04D+00   1430.7
+                 2    -1616.8251154993  2.04D+00  3.49D-01   2255.8
