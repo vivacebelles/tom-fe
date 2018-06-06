@@ -12,3 +12,7 @@ Can't run until incompatibility with slurm is fixed. 1106
 05/24/2018
 Run is working, set a run today 1541 for 6-31g basis
 Able to fix dft issue
+
+06/05/2018
+Ran up to 6311g- learned to isolate out to one single Fe atom to ensure results. Eliminate auto symmetry and auto z (use noautosym 
+and noautoz for future runs) Starting back again with 631g for single molecule.
