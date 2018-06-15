@@ -1,7 +1,7 @@
 echo
 
 start tomfe1_02
-memory total = 4000
+memory total 4000 mb
 
 geometry units angstroms noautosym noautoz
 Fe  0.56094775  1.06605861  0.33276002
