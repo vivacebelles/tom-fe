@@ -1,0 +1,1288 @@
+Mon Jun 18 10:09:48 CDT 2018
+pwd = /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03
+
+* Begin Debugging Info
+** Submission file
+	#!/bin/bash
+	#SBATCH --job-name=tomfebn_opt2
+	#SBATCH --output=tomfebn_opt2.stdout
+	#SBATCH --error=tomfebn_opt2.stderr
+	#SBATCH --nodes=1
+	#SBATCH --ntasks-per-node=4
+	#SBATCH --time=200:00:00
+	source /work/LAS/twindus-lab/nwchem/6.6/environment
+	TMPDIR=${TMPDIR:-/home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03}
+	cat << EOF_print_debug_info
+	$(printf "%s\n" "$(date)")
+	$(printf "pwd = %s\n" "$PWD")
+	
+	* Begin Debugging Info
+	** Submission file
+	$(cat /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.sub | sed s/\^/\\t/)
+	
+	** Working Directory
+	TMPDIR=$TMPDIR: $([ -d $TMPDIR ] && printf "exists\n" || printf "does not exist\n")
+	
+	** Node List
+	$(cat ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	
+	** PATH
+	$(printf "%s\n" "$PATH" | sed s/:/\\n/g)
+	
+	** LD_LIBRARY_PATH
+	$(printf "%s\n" "$LD_LIBRARY_PATH" | sed s/:/\\n/g)
+	
+	** env
+	$(env)
+	
+	** jobfile
+	$(cat /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.nw | sed s/\^/\\t/)
+	
+	* Begin run output
+	EOF_print_debug_info
+	# Print node information and copy files for job
+	cat >> /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.nodes << EOF_jobinfo
+	===$(date +"%Y-%m-%d-%r") run nodes===
+	$(uniq ${PBS_NODEFILE:-$SLURM_JOB_NODELIST})
+	Working directory $TMPDIR
+	EOF_jobinfo
+	
+	ulimit -s unlimited
+	ulimit -c unlimited
+	ulimit -l unlimited
+	cd $TMPDIR
+	cp -v /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/{tomfebn_opt2.nw,*.hess,*.movecs,*.db} $TMPDIR 2>/dev/null
+	printf "Starting %s at %s.\n" "$(which nwchem)" "$(date)"
+	export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
+	export ARMCI_DEFAULT_SHMMAX=32768
+	srun -N 1 -n 4 nwchem tomfebn_opt2.nw |& tee /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.out
+	printf "%s: nwchem finished with status $?\n" "$(date)"
+	cp $TMPDIR/{*db,*hess,*movecs,ecce*,*log,*out} /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03
+
+** Working Directory
+TMPDIR=/scratch/alolinco/301849: exists
+
+** Node List
+condo164
+condo164
+condo164
+condo164
+
+** PATH
+/work/LAS/twindus-lab/nwchem/6.6-intel/bin
+/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64
+/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64
+/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin
+/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin
+/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin
+/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin
+/usr/lib64/qt-3.3/bin
+/usr/local/bin
+/usr/bin
+/usr/local/sbin
+/usr/sbin
+~weverett/public
+~alolinco/public
+/home/alolinco/.local/bin
+/home/alolinco/bin
+
+** LD_LIBRARY_PATH
+/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib
+/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7
+/shared/hpc/intel/17.4/debugger_2017/iga/lib
+/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin
+/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+
+** env
+MKLROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl
+CPLUS_INCLUDE_PATH=/shared/hpc/intel/17.4//clck/2017.2.019/include
+SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+SLURM_NODELIST=condo164
+MPS_STAT_DIR_POSTFIX=%D-%T
+MPS_INTEL_LIBITTNOTIFY64=libmps.so
+SLURM_JOB_NAME=tomfebn_opt2
+MANPATH=/shared/hpc/intel/17.4/itac/2017.3.030/man:/shared/hpc/intel/17.4/man/common:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/man:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/man:/usr/share/lmod/lmod/share/man::
+XDG_SESSION_ID=108157
+VT_MPI=impi4
+SLURMD_NODENAME=condo164
+SLURM_TOPOLOGY_ADDR=condo164
+SLURM_NTASKS_PER_NODE=4
+HOSTNAME=condo164
+SLURM_PRIO_PROCESS=0
+SELINUX_ROLE_REQUESTED=
+IPPROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp
+INTEL_LICENSE_FILE=/shared/hpc/intel/17.4/licenses
+SLURM_NODE_ALIASES=(null)
+CLCK_ROOT=/shared/hpc/intel/17.4//clck/2017.2.019
+TERM=xterm-256color
+SHELL=/bin/bash
+MPS_LD_PRELOAD=libmps.so
+SLURM_JOB_QOS=normal
+CLICOLOR=1
+HISTSIZE=1000
+GDBSERVER_MIC=/shared/hpc/intel/17.4/debugger_2017/gdb/targets/mic/bin/gdbserver
+LMOD_DEFAULT_MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+MODULEPATH_ROOT=/usr/share/modulefiles
+TMPDIR=/scratch/alolinco/301849
+SSH_CLIENT=10.25.147.217 65413 22
+LIBRARY_PATH=/shared/hpc/intel/17.4/clck/2017.2.019/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+SELINUX_USE_CURRENT_RANGE=
+LMOD_PKG=/usr/share/lmod/lmod
+QTDIR=/usr/lib64/qt-3.3
+ADVISOR_2017_DIR=/shared/hpc/intel/17.4/advisor_2017.1.3.510716
+LMOD_VERSION=6.5.1
+QTINC=/usr/lib64/qt-3.3/include
+MIC_LD_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+SSH_TTY=/dev/pts/55
+VTUNE_AMPLIFIER_XE_2017_DIR=/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739
+QT_GRAPHICSSYSTEM_CHECKED=1
+SLURM_NNODES=1
+USER=alolinco
+NWCHEM_TOP=/work/LAS/twindus-lab/nwchem/6.6-intel/
+LD_LIBRARY_PATH=/shared/hpc/intel/17.4/itac/2017.3.030/mic/slib:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/slib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/shared/hpc/intel/17.4/debugger_2017/iga/lib:/shared/hpc/intel/17.4/debugger_2017/libipt/intel64/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64_lin/gcc4.4
+LMOD_sys=Linux
+MPS_STAT_ENABLE_IDLE_VAL=1
+MIC_LIBRARY_PATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin_mic:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/lib/mic
+CPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/ipp/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb/include:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/include
+SLURM_JOBID=301849
+SLURM_NTASKS=4
+NWCHEM_BASIS_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/
+LSCOLORS=Exfxcxdxbxegedabagacad
+LMOD_PREPEND_BLOCK=normal
+NLSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64/locale/%l_%t/%N:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/share/locale/%l_%t/%N:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64/share/locale/%l_%t/%N
+MPS_STAT_LEVEL=5
+VT_ADD_LIBS=-ldwarf -lelf -lvtunwind -lm -lpthread
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJhY3RpdmVTaXplIl09MSxiYXNlTXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbImNfcmVidWlsZFRpbWUiXT1mYWxzZSxbImNfc2hvcnRUaW1lIl09ZmFsc2UsZmFtaWx5PXt9LGluYWN0aXZlPXt9LG1UPXtpbnRlbD17WyJGTiJdPSIvZXRjL21vZHVsZWZpbGVzL2ludGVsLzE3LjQiLFsiZGVmYXVsdCJdPTAsWyJmdWxsTmFtZSJdPSJpbnRlbC8xNy40IixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzaG9ydCJdPSJp
+SLURM_TASKS_PER_NODE=4
+MAIL=/var/spool/mail/alolinco
+PATH=/work/LAS/twindus-lab/nwchem/6.6-intel/bin:/shared/hpc/intel/17.4/advisor_2017.1.3.510716/bin64:/shared/hpc/intel/17.4/vtune_amplifier_xe_2017.3.0.510739/bin64:/shared/hpc/intel/17.4/inspector_2017.1.3.510645/bin64:/shared/hpc/intel/17.4/itac/2017.3.030/intel64/bin:/shared/hpc/intel/17.4/clck/2017.2.019/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/bin:/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin:/shared/hpc/intel/17.4/parallel_studio_xe_2017.4.056/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:~weverett/public:~alolinco/public:/home/alolinco/.local/bin:/home/alolinco/bin
+SLURM_WORKING_CLUSTER=condo2017:172.16.253.4:6817:8192
+NWCHEM_NWPW_LIBRARY=/work/LAS/twindus-lab/nwchem/6.6-intel/data/libraryps/
+MPS_KMP_FORKJOIN_FRAMES_MODE=3
+SLURM_JOB_ID=301849
+TBBROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/tbb
+LMOD_SETTARG_CMD=:
+F90=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_JOB_USER=alolinco
+PWD=/home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03
+_LMFILES_=/etc/modulefiles/intel/17.4
+GDB_CROSS=/shared/hpc/intel/17.4/debugger_2017/gdb/intel64_mic/bin/gdb-mic
+LANG=en_US.UTF-8
+MODULEPATH=/etc/modulefiles:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+VT_LIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/lib
+LOADEDMODULES=intel/17.4
+_ModuleTable_Sz_=2
+SLURM_JOB_UID=369342
+SLURM_NODEID=0
+MPS_STAT_ENABLE_IDLE=I_MPI_PVAR_IDLE
+F77=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_SUBMIT_DIR=/work/LAS/twindus-lab/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03
+SELINUX_LEVEL_REQUESTED=
+VT_ROOT=/shared/hpc/intel/17.4//itac/2017.3.030
+SLURM_TASK_PID=16948
+SLURM_NPROCS=4
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+MPS_TOOL_ROOT=/shared/hpc/intel/17.4/itac/2017.3.030
+DAALROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal
+SLURM_CPUS_ON_NODE=4
+MPM_LAUNCHER=/shared/hpc/intel/17.4/debugger_2017/mpm/mic/bin/start_mpm.sh
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+HISTCONTROL=ignoredups
+KRB5CCNAME=KEYRING:persistent:369342
+INTEL_PYTHONHOME=/shared/hpc/intel/17.4/debugger_2017/python/intel64/
+SLURM_JOB_NODELIST=condo164
+SPCE=/work/LAS/twindus-lab/nwchem/6.6-intel/data/solvents/spce.rst
+SHLVL=3
+HOME=/home/alolinco
+SLURM_LOCALID=0
+GREP_OPTIONS=--color=auto
+_ModuleTable002_=bnRlbCIsWyJzdGF0dXMiXT0iYWN0aXZlIix9LH0sbXBhdGhBPXsiL2V0Yy9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvZXRjL21vZHVsZWZpbGVzOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsWyJ2ZXJzaW9uIl09Mix9
+SLURM_JOB_GID=101
+SLURM_JOB_CPUS_PER_NODE=4
+SLURM_CLUSTER_NAME=condo2017
+AMBER_1=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_s/
+VT_SLIB_DIR=/shared/hpc/intel/17.4//itac/2017.3.030/intel64/slib
+VT_ARCH=intel64
+FC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/ifort
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=condo2017.its.iastate.edu
+AMBER_2=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_q/
+SLURM_JOB_PARTITION=long_1node
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+AMBER_3=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_x/
+PYTHONPATH=/shared/hpc/intel/17.4/advisor_2017.1.3.510716/pythonapi
+LMOD_arch=x86_64
+LOGNAME=alolinco
+AMBER_4=/work/LAS/twindus-lab/nwchem/6.6-intel/data/amber_u/
+QTLIB=/usr/lib64/qt-3.3/lib
+CLASSPATH=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib/mpi.jar:/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/daal/lib/daal.jar
+SLURM_JOB_ACCOUNT=its-hpc-condo-las
+XDG_DATA_DIRS=/home/alolinco/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+SSH_CONNECTION=10.25.147.217 65413 10.24.107.19 22
+MPS_STAT_MESSAGES=1
+SLURM_JOB_NUM_NODES=1
+MODULESHOME=/usr/share/lmod/lmod
+CHARMM_X=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_x/
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+INSPECTOR_2017_DIR=/shared/hpc/intel/17.4/inspector_2017.1.3.510645
+INFOPATH=/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-ia/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-mic/info:/shared/hpc/intel/17.4/documentation_2017/en/debugger/gdb-igfx/info
+LMOD_FULL_SETTARG_SUPPORT=no
+CC=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/bin/intel64/icc
+XDG_RUNTIME_DIR=/run/user/369342
+CHARMM_S=/work/LAS/twindus-lab/nwchem/6.6-intel/data/charmm_s/
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+PBS_NODEFILE=/scratch/alolinco/301849/bw6I_rFozt
+SLURM_MEM_PER_NODE=128834
+LMOD_COLORIZE=yes
+I_MPI_ROOT=/shared/hpc/intel/17.4/compilers_and_libraries_2017.4.196/linux/mpi
+BASH_FUNC_module()=() {  eval $($LMOD_CMD bash "$@");
+ [ $? = 0 ] && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+BASH_FUNC_ml()=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+_=/usr/bin/env
+
+** jobfile
+	echo
+	
+	start tomfe_opt2
+	memory total 4000 mb
+	
+	geometry units angstroms noautosym noautoz
+	Fe  0.62677395  1.03517957  0.4156079
+	O   -2.4050317  -0.44989388 -1.99209245
+	O   -1.961104   -1.38443071 2.47035788
+	O   0.94715414  -3.04689912 -0.57231315
+	N   -0.8695523  0.82911953  -0.95806268
+	N   -0.59272072 0.26968848  1.80272444
+	N   1.3768409   -0.86090755 -0.24176576
+	C   2.01286361  1.98627488  1.51282399
+	C   2.48431565  2.80196712  0.37803703
+	C   1.65591391  3.82346222  -0.15002103
+	H   0.73902844  4.07538522  0.37996232
+	C   2.02405833  4.55268795  -1.28313647
+	H   1.37236978  5.33973374  -1.65137636
+	C   3.22994486  4.28536788  -1.93212762
+	H   3.52089306  4.8535587   -2.80933289
+	C   4.07014164  3.28777833  -1.42491583
+	H   5.02187661  3.08611706  -1.90792386
+	C   3.70560247  2.56097471  -0.29500149
+	H   4.38374846  1.81227978  0.10370239
+	C   -1.35134945 1.70717543  -2.07514943
+	C   -1.86065329 3.03731694  -1.52439019
+	H   -2.62593183 2.86886285  -0.7598474
+	H   -1.04005199 3.60589417  -1.07830075
+	H   -2.29618709 3.64276774  -2.32794918
+	C   -2.50490958 0.855865    -2.67108369
+	H   -2.40643427 0.679393    -3.74288586
+	H   -3.49325579 1.26693765  -2.44837968
+	C   -1.46828007 -0.32424273 -0.99560824
+	C   -1.19885509 -0.83593294 1.46894998
+	C   -1.97466057 -0.42402892 3.59022704
+	H   -2.9678368  0.03407346  3.6166728
+	H   -1.79461068 -0.98385737 4.50798367
+	C   -0.85418969 0.58864751  3.24797324
+	C   -1.32630486 2.03085244  3.40082244
+	H   -0.53882985 2.72809465  3.10148804
+	H   -2.20643138 2.21432103  2.77594208
+	H   -1.58821626 2.24023861  4.44447951
+	C   0.40474592  0.30650179  4.07101023
+	H   0.7039932   -0.74098006 3.9586452
+	H   1.2322955   0.93659248  3.74194631
+	H   0.21354726  0.50245224  5.13279
+	C   0.46701212  -1.79330663 -0.2643914
+	C   2.39689204  -2.93653238 -0.81537888
+	H   2.89918915  -3.60991297 -0.11797349
+	H   2.58298819  -3.2557004  -1.84325463
+	C   2.72321213  -1.44039795 -0.56902519
+	C   3.27162468  -0.76882    -1.82694493
+	H   2.59085211  -0.92458445 -2.67041477
+	H   3.38158964  0.30748384  -1.66994034
+	H   4.25177038  -1.18559363 -2.08841504
+	C   3.66352817  -1.27015164 0.62291295
+	H   3.81773947  -0.21209051 0.84089324
+	H   3.2399657   -1.74317945 1.51497588
+	H   4.63644274  -1.72927983 0.41090381
+	C   -2.1534885  -2.77828967 -0.14050252
+	C   -3.52040926 -2.52792901 0.09633904
+	H   -3.83439113 -1.52768404 0.38365165
+	C   -4.48796549 -3.52326713 -0.02313072
+	H   -5.53164316 -3.29102644 0.17010336
+	C   -4.11561521 -4.81804145 -0.39136052
+	H   -4.86472834 -5.59856652 -0.48739808
+	C   -2.77145553 -5.09397977 -0.63484564
+	H   -2.46694956 -6.09613153 -0.92415832
+	C   -1.80696486 -4.08922331 -0.51035772
+	H   -0.76880032 -4.32783204 -0.70374197
+	C   -0.21711623 1.91267287  -3.08121109
+	H   0.63076124  2.41885815  -2.60960742
+	H   0.12683981  0.94919368  -3.47155855
+	H   -0.56042677 2.5279396   -3.92149432
+	B   -1.1246909  -1.55195472 0.00869777
+	H   1.49222877  2.59365587  2.26537127
+	H   2.79361883  1.39097064  1.99353778
+	end
+	
+	basis
+	 Fe library "Stuttgart RSC 1997 ECP"
+	 B library 6-311g
+	 C library 6-311g
+	 O library 6-311g
+	 N library 6-311g
+	 H library 6-311g
+	end
+	
+	ecp
+	 Fe library "Stuttgart RSC 1997 ECP"
+	end
+	
+	scf
+	 triplet
+	 direct
+	 maxiter 200
+	 thresh 1.0e-6
+	 tol2e 1.0e-9
+	end
+	
+	task scf energy
+	
+	dft
+	 direct
+	 grid fine
+	 xc pbe0
+	 rodft
+	 cgmin
+	 mult 3
+	 maxiter 200
+	end
+	
+	driver
+	 maxiter 200
+	end
+	
+	task dft optimize
+
+* Begin run output
+‘/home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.nw’ -> ‘/scratch/alolinco/301849/tomfebn_opt2.nw’
+Starting /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem at Mon Jun 18 10:09:48 CDT 2018.
+export PBS_NODEFILE=/scratch/alolinco/301849/KXbFzInc1s
+export TMPDIR=/scratch/alolinco/301849
+ argument  1 = tomfebn_opt2.nw
+ 
+
+
+============================== echo of input deck ==============================
+echo
+
+start tomfe_opt2
+memory total 4000 mb
+
+geometry units angstroms noautosym noautoz
+Fe  0.62677395  1.03517957  0.4156079
+O   -2.4050317  -0.44989388 -1.99209245
+O   -1.961104   -1.38443071 2.47035788
+O   0.94715414  -3.04689912 -0.57231315
+N   -0.8695523  0.82911953  -0.95806268
+N   -0.59272072 0.26968848  1.80272444
+N   1.3768409   -0.86090755 -0.24176576
+C   2.01286361  1.98627488  1.51282399
+C   2.48431565  2.80196712  0.37803703
+C   1.65591391  3.82346222  -0.15002103
+H   0.73902844  4.07538522  0.37996232
+C   2.02405833  4.55268795  -1.28313647
+H   1.37236978  5.33973374  -1.65137636
+C   3.22994486  4.28536788  -1.93212762
+H   3.52089306  4.8535587   -2.80933289
+C   4.07014164  3.28777833  -1.42491583
+H   5.02187661  3.08611706  -1.90792386
+C   3.70560247  2.56097471  -0.29500149
+H   4.38374846  1.81227978  0.10370239
+C   -1.35134945 1.70717543  -2.07514943
+C   -1.86065329 3.03731694  -1.52439019
+H   -2.62593183 2.86886285  -0.7598474
+H   -1.04005199 3.60589417  -1.07830075
+H   -2.29618709 3.64276774  -2.32794918
+C   -2.50490958 0.855865    -2.67108369
+H   -2.40643427 0.679393    -3.74288586
+H   -3.49325579 1.26693765  -2.44837968
+C   -1.46828007 -0.32424273 -0.99560824
+C   -1.19885509 -0.83593294 1.46894998
+C   -1.97466057 -0.42402892 3.59022704
+H   -2.9678368  0.03407346  3.6166728
+H   -1.79461068 -0.98385737 4.50798367
+C   -0.85418969 0.58864751  3.24797324
+C   -1.32630486 2.03085244  3.40082244
+H   -0.53882985 2.72809465  3.10148804
+H   -2.20643138 2.21432103  2.77594208
+H   -1.58821626 2.24023861  4.44447951
+C   0.40474592  0.30650179  4.07101023
+H   0.7039932   -0.74098006 3.9586452
+H   1.2322955   0.93659248  3.74194631
+H   0.21354726  0.50245224  5.13279
+C   0.46701212  -1.79330663 -0.2643914
+C   2.39689204  -2.93653238 -0.81537888
+H   2.89918915  -3.60991297 -0.11797349
+H   2.58298819  -3.2557004  -1.84325463
+C   2.72321213  -1.44039795 -0.56902519
+C   3.27162468  -0.76882    -1.82694493
+H   2.59085211  -0.92458445 -2.67041477
+H   3.38158964  0.30748384  -1.66994034
+H   4.25177038  -1.18559363 -2.08841504
+C   3.66352817  -1.27015164 0.62291295
+H   3.81773947  -0.21209051 0.84089324
+H   3.2399657   -1.74317945 1.51497588
+H   4.63644274  -1.72927983 0.41090381
+C   -2.1534885  -2.77828967 -0.14050252
+C   -3.52040926 -2.52792901 0.09633904
+H   -3.83439113 -1.52768404 0.38365165
+C   -4.48796549 -3.52326713 -0.02313072
+H   -5.53164316 -3.29102644 0.17010336
+C   -4.11561521 -4.81804145 -0.39136052
+H   -4.86472834 -5.59856652 -0.48739808
+C   -2.77145553 -5.09397977 -0.63484564
+H   -2.46694956 -6.09613153 -0.92415832
+C   -1.80696486 -4.08922331 -0.51035772
+H   -0.76880032 -4.32783204 -0.70374197
+C   -0.21711623 1.91267287  -3.08121109
+H   0.63076124  2.41885815  -2.60960742
+H   0.12683981  0.94919368  -3.47155855
+H   -0.56042677 2.5279396   -3.92149432
+B   -1.1246909  -1.55195472 0.00869777
+H   1.49222877  2.59365587  2.26537127
+H   2.79361883  1.39097064  1.99353778
+end
+
+basis
+ Fe library "Stuttgart RSC 1997 ECP"
+ B library 6-311g
+ C library 6-311g
+ O library 6-311g
+ N library 6-311g
+ H library 6-311g
+end
+
+ecp
+ Fe library "Stuttgart RSC 1997 ECP"
+end
+
+scf
+ triplet
+ direct
+ maxiter 200
+ thresh 1.0e-6
+ tol2e 1.0e-9
+end
+
+task scf energy
+
+dft
+ direct
+ grid fine
+ xc pbe0
+ rodft
+ cgmin
+ mult 3
+ maxiter 200
+end
+
+driver
+ maxiter 200
+end
+
+task dft optimize
+================================================================================
+
+
+                                         
+                                         
+ 
+ 
+              Northwest Computational Chemistry Package (NWChem) 6.6
+              ------------------------------------------------------
+ 
+ 
+                    Environmental Molecular Sciences Laboratory
+                       Pacific Northwest National Laboratory
+                                Richland, WA 99352
+ 
+                              Copyright (c) 1994-2015
+                       Pacific Northwest National Laboratory
+                            Battelle Memorial Institute
+ 
+             NWChem is an open-source computational chemistry package
+                        distributed under the terms of the
+                      Educational Community License (ECL) 2.0
+             A copy of the license is included with this distribution
+                              in the LICENSE.TXT file
+ 
+                                  ACKNOWLEDGMENT
+                                  --------------
+
+            This software and its documentation were developed at the
+            EMSL at Pacific Northwest National Laboratory, a multiprogram
+            national laboratory, operated for the U.S. Department of Energy
+            by Battelle under Contract Number DE-AC05-76RL01830. Support
+            for this work was provided by the Department of Energy Office
+            of Biological and Environmental Research, Office of Basic
+            Energy Sciences, and the Office of Advanced Scientific Computing.
+
+
+           Job information
+           ---------------
+
+    hostname        = condo164
+    program         = /work/LAS/twindus-lab/nwchem/6.6-intel/bin/nwchem
+    date            = Mon Jun 18 10:09:48 2018
+
+    compiled        = Tue_Oct_24_08:26:58_2017
+    source          = /home/weverett/build/nwchem/nwchem-6.6-intel
+    nwchem branch   = 6.6
+    nwchem revision = 27746
+    ga revision     = 10594
+    input           = tomfebn_opt2.nw
+    prefix          = tomfe_opt2.
+    data base       = ./tomfe_opt2.db
+    status          = startup
+    nproc           =        4
+    time left       =     -1s
+
+
+
+           Memory information
+           ------------------
+
+    heap     =  131071996 doubles =   1000.0 Mbytes
+    stack    =  131072001 doubles =   1000.0 Mbytes
+    global   =  262144000 doubles =   2000.0 Mbytes (distinct from heap & stack)
+    total    =  524287997 doubles =   4000.0 Mbytes
+    verify   = yes
+    hardfail = no 
+
+
+           Directory information
+           ---------------------
+ 
+  0 permanent = .
+  0 scratch   = .
+ 
+ 
+ 
+ 
+                                NWChem Input Module
+                                -------------------
+ 
+ 
+
+ Scaling coordinates for geometry "geometry" by  1.889725989
+ (inverse scale =  0.529177249)
+
+ 
+ 
+                             Geometry "geometry" -> ""
+                             -------------------------
+ 
+ Output coordinates in angstroms (scale by  1.889725989 to convert to a.u.)
+ 
+  No.       Tag          Charge          X              Y              Z
+ ---- ---------------- ---------- -------------- -------------- --------------
+    1 Fe                  26.0000     0.63978955     1.02339670     0.40450304
+    2 O                    8.0000    -2.39201610    -0.46167675    -2.00319731
+    3 O                    8.0000    -1.94808840    -1.39621358     2.45925302
+    4 O                    8.0000     0.96016974    -3.05868199    -0.58341801
+    5 N                    7.0000    -0.85653670     0.81733666    -0.96916754
+    6 N                    7.0000    -0.57970512     0.25790561     1.79161958
+    7 N                    7.0000     1.38985650    -0.87269042    -0.25287062
+    8 C                    6.0000     2.02587921     1.97449201     1.50171913
+    9 C                    6.0000     2.49733125     2.79018425     0.36693217
+   10 C                    6.0000     1.66892951     3.81167935    -0.16112589
+   11 H                    1.0000     0.75204404     4.06360235     0.36885746
+   12 C                    6.0000     2.03707393     4.54090508    -1.29424133
+   13 H                    1.0000     1.38538538     5.32795087    -1.66248122
+   14 C                    6.0000     3.24296046     4.27358501    -1.94323248
+   15 H                    1.0000     3.53390866     4.84177583    -2.82043775
+   16 C                    6.0000     4.08315724     3.27599546    -1.43602069
+   17 H                    1.0000     5.03489221     3.07433419    -1.91902872
+   18 C                    6.0000     3.71861807     2.54919184    -0.30610635
+   19 H                    1.0000     4.39676406     1.80049691     0.09259753
+   20 C                    6.0000    -1.33833385     1.69539256    -2.08625429
+   21 C                    6.0000    -1.84763769     3.02553407    -1.53549505
+   22 H                    1.0000    -2.61291623     2.85707998    -0.77095226
+   23 H                    1.0000    -1.02703639     3.59411130    -1.08940561
+   24 H                    1.0000    -2.28317149     3.63098487    -2.33905404
+   25 C                    6.0000    -2.49189398     0.84408213    -2.68218855
+   26 H                    1.0000    -2.39341867     0.66761013    -3.75399072
+   27 H                    1.0000    -3.48024019     1.25515478    -2.45948454
+   28 C                    6.0000    -1.45526447    -0.33602560    -1.00671310
+   29 C                    6.0000    -1.18583949    -0.84771581     1.45784512
+   30 C                    6.0000    -1.96164497    -0.43581179     3.57912218
+   31 H                    1.0000    -2.95482120     0.02229059     3.60556794
+   32 H                    1.0000    -1.78159508    -0.99564024     4.49687881
+   33 C                    6.0000    -0.84117409     0.57686464     3.23686838
+   34 C                    6.0000    -1.31328926     2.01906957     3.38971758
+   35 H                    1.0000    -0.52581425     2.71631178     3.09038318
+   36 H                    1.0000    -2.19341578     2.20253816     2.76483722
+   37 H                    1.0000    -1.57520066     2.22845574     4.43337465
+   38 C                    6.0000     0.41776152     0.29471892     4.05990537
+   39 H                    1.0000     0.71700880    -0.75276293     3.94754034
+   40 H                    1.0000     1.24531110     0.92480961     3.73084145
+   41 H                    1.0000     0.22656286     0.49066937     5.12168514
+   42 C                    6.0000     0.48002772    -1.80508950    -0.27549626
+   43 C                    6.0000     2.40990764    -2.94831525    -0.82648374
+   44 H                    1.0000     2.91220475    -3.62169584    -0.12907835
+   45 H                    1.0000     2.59600379    -3.26748327    -1.85435949
+   46 C                    6.0000     2.73622773    -1.45218082    -0.58013005
+   47 C                    6.0000     3.28464028    -0.78060287    -1.83804979
+   48 H                    1.0000     2.60386771    -0.93636732    -2.68151963
+   49 H                    1.0000     3.39460524     0.29570097    -1.68104520
+   50 H                    1.0000     4.26478598    -1.19737650    -2.09951990
+   51 C                    6.0000     3.67654377    -1.28193451     0.61180809
+   52 H                    1.0000     3.83075507    -0.22387338     0.82978838
+   53 H                    1.0000     3.25298130    -1.75496232     1.50387102
+   54 H                    1.0000     4.64945834    -1.74106270     0.39979895
+   55 C                    6.0000    -2.14047290    -2.79007254    -0.15160738
+   56 C                    6.0000    -3.50739366    -2.53971188     0.08523418
+   57 H                    1.0000    -3.82137553    -1.53946691     0.37254679
+   58 C                    6.0000    -4.47494989    -3.53505000    -0.03423558
+   59 H                    1.0000    -5.51862756    -3.30280931     0.15899850
+   60 C                    6.0000    -4.10259961    -4.82982432    -0.40246538
+   61 H                    1.0000    -4.85171274    -5.61034939    -0.49850294
+   62 C                    6.0000    -2.75843993    -5.10576264    -0.64595050
+   63 H                    1.0000    -2.45393396    -6.10791440    -0.93526318
+   64 C                    6.0000    -1.79394926    -4.10100618    -0.52146258
+   65 H                    1.0000    -0.75578472    -4.33961491    -0.71484683
+   66 C                    6.0000    -0.20410063     1.90089000    -3.09231595
+   67 H                    1.0000     0.64377684     2.40707528    -2.62071228
+   68 H                    1.0000     0.13985541     0.93741081    -3.48266341
+   69 H                    1.0000    -0.54741117     2.51615673    -3.93259918
+   70 B                    5.0000    -1.11167530    -1.56373759    -0.00240709
+   71 H                    1.0000     1.50524437     2.58187300     2.25426641
+   72 H                    1.0000     2.80663443     1.37918777     1.98243292
+ 
+      Atomic Mass 
+      ----------- 
+ 
+      Fe                55.934900
+      O                 15.994910
+      N                 14.003070
+      C                 12.000000
+      H                  1.007825
+      B                 11.009310
+ 
+
+ Effective nuclear repulsion energy (a.u.)    4891.7304745627
+
+            Nuclear Dipole moment (a.u.) 
+            ----------------------------
+        X                 Y               Z
+ ---------------- ---------------- ----------------
+    -0.0000000000     0.0000000000    -0.0000000000
+ 
+ 
+            XYZ format geometry
+            -------------------
+    72
+ geometry
+ Fe                    0.63978955     1.02339670     0.40450304
+ O                    -2.39201610    -0.46167675    -2.00319731
+ O                    -1.94808840    -1.39621358     2.45925302
+ O                     0.96016974    -3.05868199    -0.58341801
+ N                    -0.85653670     0.81733666    -0.96916754
+ N                    -0.57970512     0.25790561     1.79161958
+ N                     1.38985650    -0.87269042    -0.25287062
+ C                     2.02587921     1.97449201     1.50171913
+ C                     2.49733125     2.79018425     0.36693217
+ C                     1.66892951     3.81167935    -0.16112589
+ H                     0.75204404     4.06360235     0.36885746
+ C                     2.03707393     4.54090508    -1.29424133
+ H                     1.38538538     5.32795087    -1.66248122
+ C                     3.24296046     4.27358501    -1.94323248
+ H                     3.53390866     4.84177583    -2.82043775
+ C                     4.08315724     3.27599546    -1.43602069
+ H                     5.03489221     3.07433419    -1.91902872
+ C                     3.71861807     2.54919184    -0.30610635
+ H                     4.39676406     1.80049691     0.09259753
+ C                    -1.33833385     1.69539256    -2.08625429
+ C                    -1.84763769     3.02553407    -1.53549505
+ H                    -2.61291623     2.85707998    -0.77095226
+ H                    -1.02703639     3.59411130    -1.08940561
+ H                    -2.28317149     3.63098487    -2.33905404
+ C                    -2.49189398     0.84408213    -2.68218855
+ H                    -2.39341867     0.66761013    -3.75399072
+ H                    -3.48024019     1.25515478    -2.45948454
+ C                    -1.45526447    -0.33602560    -1.00671310
+ C                    -1.18583949    -0.84771581     1.45784512
+ C                    -1.96164497    -0.43581179     3.57912218
+ H                    -2.95482120     0.02229059     3.60556794
+ H                    -1.78159508    -0.99564024     4.49687881
+ C                    -0.84117409     0.57686464     3.23686838
+ C                    -1.31328926     2.01906957     3.38971758
+ H                    -0.52581425     2.71631178     3.09038318
+ H                    -2.19341578     2.20253816     2.76483722
+ H                    -1.57520066     2.22845574     4.43337465
+ C                     0.41776152     0.29471892     4.05990537
+ H                     0.71700880    -0.75276293     3.94754034
+ H                     1.24531110     0.92480961     3.73084145
+ H                     0.22656286     0.49066937     5.12168514
+ C                     0.48002772    -1.80508950    -0.27549626
+ C                     2.40990764    -2.94831525    -0.82648374
+ H                     2.91220475    -3.62169584    -0.12907835
+ H                     2.59600379    -3.26748327    -1.85435949
+ C                     2.73622773    -1.45218082    -0.58013005
+ C                     3.28464028    -0.78060287    -1.83804979
+ H                     2.60386771    -0.93636732    -2.68151963
+ H                     3.39460524     0.29570097    -1.68104520
+ H                     4.26478598    -1.19737650    -2.09951990
+ C                     3.67654377    -1.28193451     0.61180809
+ H                     3.83075507    -0.22387338     0.82978838
+ H                     3.25298130    -1.75496232     1.50387102
+ H                     4.64945834    -1.74106270     0.39979895
+ C                    -2.14047290    -2.79007254    -0.15160738
+ C                    -3.50739366    -2.53971188     0.08523418
+ H                    -3.82137553    -1.53946691     0.37254679
+ C                    -4.47494989    -3.53505000    -0.03423558
+ H                    -5.51862756    -3.30280931     0.15899850
+ C                    -4.10259961    -4.82982432    -0.40246538
+ H                    -4.85171274    -5.61034939    -0.49850294
+ C                    -2.75843993    -5.10576264    -0.64595050
+ H                    -2.45393396    -6.10791440    -0.93526318
+ C                    -1.79394926    -4.10100618    -0.52146258
+ H                    -0.75578472    -4.33961491    -0.71484683
+ C                    -0.20410063     1.90089000    -3.09231595
+ H                     0.64377684     2.40707528    -2.62071228
+ H                     0.13985541     0.93741081    -3.48266341
+ H                    -0.54741117     2.51615673    -3.93259918
+ B                    -1.11167530    -1.56373759    -0.00240709
+ H                     1.50524437     2.58187300     2.25426641
+ H                     2.80663443     1.37918777     1.98243292
+ 
+ ==============================================================================
+                                internuclear distances
+ ------------------------------------------------------------------------------
+       center one      |      center two      | atomic units |  angstroms
+ ------------------------------------------------------------------------------
+    5 N                |   1 Fe               |     3.85820  |     2.04167
+    6 N                |   1 Fe               |     3.77815  |     1.99931
+    7 N                |   1 Fe               |     4.04855  |     2.14240
+    8 C                |   1 Fe               |     3.79346  |     2.00741
+    9 C                |   8 C                |     2.78718  |     1.47491
+   10 C                |   9 C                |     2.67818  |     1.41723
+   11 H                |  10 C                |     2.05714  |     1.08859
+   12 C                |  10 C                |     2.63971  |     1.39687
+   13 H                |  12 C                |     2.05254  |     1.08616
+   14 C                |  12 C                |     2.63670  |     1.39528
+   15 H                |  14 C                |     2.05014  |     1.08489
+   16 C                |  14 C                |     2.64452  |     1.39942
+   17 H                |  16 C                |     2.05256  |     1.08617
+   18 C                |   9 C                |     2.67421  |     1.41513
+   18 C                |  16 C                |     2.63062  |     1.39206
+   19 H                |  18 C                |     2.05224  |     1.08600
+   20 C                |   5 N                |     2.83521  |     1.50033
+   21 C                |  20 C                |     2.88578  |     1.52709
+   22 H                |  21 C                |     2.06884  |     1.09478
+   23 H                |  21 C                |     2.06635  |     1.09346
+   24 H                |  21 C                |     2.07179  |     1.09634
+   25 C                |   2 O                |     2.78759  |     1.47513
+   25 C                |  20 C                |     2.93399  |     1.55260
+   26 H                |  25 C                |     2.06110  |     1.09069
+   27 H                |  25 C                |     2.06612  |     1.09335
+   28 C                |   2 O                |     2.59538  |     1.37342
+   28 C                |   5 N                |     2.45674  |     1.30005
+   29 C                |   3 O                |     2.59429  |     1.37284
+   29 C                |   6 N                |     2.46477  |     1.30430
+   30 C                |   3 O                |     2.78801  |     1.47535
+   31 H                |  30 C                |     2.06746  |     1.09405
+   32 H                |  30 C                |     2.05980  |     1.09000
+   33 C                |   6 N                |     2.84016  |     1.50295
+   33 C                |  30 C                |     2.92640  |     1.54858
+   34 C                |  33 C                |     2.88219  |     1.52519
+   35 H                |  34 C                |     2.06652  |     1.09356
+   36 H                |  34 C                |     2.06902  |     1.09488
+   37 H                |  34 C                |     2.07152  |     1.09620
+   38 C                |  33 C                |     2.89191  |     1.53033
+   39 H                |  38 C                |     2.06957  |     1.09517
+   40 H                |  38 C                |     2.06157  |     1.09093
+   41 H                |  38 C                |     2.07210  |     1.09651
+   42 C                |   4 O                |     2.60264  |     1.37726
+   42 C                |   7 N                |     2.46221  |     1.30295
+   43 C                |   4 O                |     2.78566  |     1.47411
+   44 H                |  43 C                |     2.06328  |     1.09184
+   45 H                |  43 C                |     2.06407  |     1.09226
+   46 C                |   7 N                |     2.83813  |     1.50187
+   46 C                |  43 C                |     2.93096  |     1.55100
+   47 C                |  46 C                |     2.88710  |     1.52779
+   48 H                |  47 C                |     2.06936  |     1.09506
+   49 H                |  47 C                |     2.06592  |     1.09324
+   50 H                |  47 C                |     2.07246  |     1.09670
+   51 C                |  46 C                |     2.88695  |     1.52771
+   52 H                |  51 C                |     2.06213  |     1.09123
+   53 H                |  51 C                |     2.06917  |     1.09496
+   54 H                |  51 C                |     2.07208  |     1.09650
+   56 C                |  55 C                |     2.66394  |     1.40970
+   57 H                |  56 C                |     2.05418  |     1.08702
+   58 C                |  56 C                |     2.63285  |     1.39325
+   59 H                |  58 C                |     2.05324  |     1.08653
+   60 C                |  58 C                |     2.63932  |     1.39667
+   61 H                |  60 C                |     2.05243  |     1.08610
+   62 C                |  60 C                |     2.63357  |     1.39363
+   63 H                |  62 C                |     2.05341  |     1.08662
+   64 C                |  55 C                |     2.65600  |     1.40550
+   64 C                |  62 C                |     2.64243  |     1.39831
+   65 H                |  64 C                |     2.04590  |     1.08264
+   66 C                |  20 C                |     2.89126  |     1.52999
+   67 H                |  66 C                |     2.06796  |     1.09432
+   68 H                |  66 C                |     2.06920  |     1.09497
+   69 H                |  66 C                |     2.07224  |     1.09658
+   70 B                |  28 C                |     3.06693  |     1.62295
+   70 B                |  29 C                |     3.07656  |     1.62804
+   70 B                |  42 C                |     3.08572  |     1.63290
+   70 B                |  55 C                |     3.03804  |     1.60766
+   71 H                |   8 C                |     2.07552  |     1.09832
+   72 H                |   8 C                |     2.06582  |     1.09318
+ ------------------------------------------------------------------------------
+                         number of included internuclear distances:         78
+ ==============================================================================
+
+
+
+ ==============================================================================
+                                 internuclear angles
+ ------------------------------------------------------------------------------
+        center 1       |       center 2       |       center 3       |  degrees
+ ------------------------------------------------------------------------------
+    5 N                |   1 Fe               |   6 N                |    88.92
+    5 N                |   1 Fe               |   7 N                |    87.75
+    5 N                |   1 Fe               |   8 C                |   157.16
+    6 N                |   1 Fe               |   7 N                |    95.02
+    6 N                |   1 Fe               |   8 C                |   102.91
+    7 N                |   1 Fe               |   8 C                |   110.20
+   25 C                |   2 O                |  28 C                |   107.41
+   29 C                |   3 O                |  30 C                |   107.38
+   42 C                |   4 O                |  43 C                |   108.15
+    1 Fe               |   5 N                |  20 C                |   132.63
+    1 Fe               |   5 N                |  28 C                |   116.52
+   20 C                |   5 N                |  28 C                |   110.48
+    1 Fe               |   6 N                |  29 C                |   115.50
+    1 Fe               |   6 N                |  33 C                |   133.79
+   29 C                |   6 N                |  33 C                |   110.19
+    1 Fe               |   7 N                |  42 C                |   113.22
+    1 Fe               |   7 N                |  46 C                |   136.24
+   42 C                |   7 N                |  46 C                |   110.25
+    1 Fe               |   8 C                |   9 C                |    93.57
+    1 Fe               |   8 C                |  71 H                |   108.01
+    1 Fe               |   8 C                |  72 H                |   118.39
+    9 C                |   8 C                |  71 H                |   111.89
+    9 C                |   8 C                |  72 H                |   114.28
+   71 H                |   8 C                |  72 H                |   109.78
+    8 C                |   9 C                |  10 C                |   119.90
+    8 C                |   9 C                |  18 C                |   123.20
+   10 C                |   9 C                |  18 C                |   116.74
+    9 C                |  10 C                |  11 H                |   118.54
+    9 C                |  10 C                |  12 C                |   121.63
+   11 H                |  10 C                |  12 C                |   119.74
+   10 C                |  12 C                |  13 H                |   119.68
+   10 C                |  12 C                |  14 C                |   120.34
+   13 H                |  12 C                |  14 C                |   119.98
+   12 C                |  14 C                |  15 H                |   120.50
+   12 C                |  14 C                |  16 C                |   119.14
+   15 H                |  14 C                |  16 C                |   120.36
+   14 C                |  16 C                |  17 H                |   119.82
+   14 C                |  16 C                |  18 C                |   120.61
+   17 H                |  16 C                |  18 C                |   119.57
+    9 C                |  18 C                |  16 C                |   121.54
+    9 C                |  18 C                |  19 H                |   118.80
+   16 C                |  18 C                |  19 H                |   119.63
+    5 N                |  20 C                |  21 C                |   110.39
+    5 N                |  20 C                |  25 C                |   101.74
+    5 N                |  20 C                |  66 C                |   109.28
+   21 C                |  20 C                |  25 C                |   111.61
+   21 C                |  20 C                |  66 C                |   111.56
+   25 C                |  20 C                |  66 C                |   111.84
+   20 C                |  21 C                |  22 H                |   110.55
+   20 C                |  21 C                |  23 H                |   110.47
+   20 C                |  21 C                |  24 H                |   110.44
+   22 H                |  21 C                |  23 H                |   108.64
+   22 H                |  21 C                |  24 H                |   108.61
+   23 H                |  21 C                |  24 H                |   108.06
+    2 O                |  25 C                |  20 C                |   104.97
+    2 O                |  25 C                |  26 H                |   107.64
+    2 O                |  25 C                |  27 H                |   107.47
+   20 C                |  25 C                |  26 H                |   113.50
+   20 C                |  25 C                |  27 H                |   112.79
+   26 H                |  25 C                |  27 H                |   110.04
+    2 O                |  28 C                |   5 N                |   114.60
+    2 O                |  28 C                |  70 B                |   121.61
+    5 N                |  28 C                |  70 B                |   123.76
+    3 O                |  29 C                |   6 N                |   114.21
+    3 O                |  29 C                |  70 B                |   120.25
+    6 N                |  29 C                |  70 B                |   125.53
+    3 O                |  30 C                |  31 H                |   107.41
+    3 O                |  30 C                |  32 H                |   107.65
+    3 O                |  30 C                |  33 C                |   104.55
+   31 H                |  30 C                |  32 H                |   110.16
+   31 H                |  30 C                |  33 C                |   112.85
+   32 H                |  30 C                |  33 C                |   113.73
+    6 N                |  33 C                |  30 C                |   101.51
+    6 N                |  33 C                |  34 C                |   110.54
+    6 N                |  33 C                |  38 C                |   109.57
+   30 C                |  33 C                |  34 C                |   111.85
+   30 C                |  33 C                |  38 C                |   110.84
+   34 C                |  33 C                |  38 C                |   112.03
+   33 C                |  34 C                |  35 H                |   110.64
+   33 C                |  34 C                |  36 H                |   110.49
+   33 C                |  34 C                |  37 H                |   110.49
+   35 H                |  34 C                |  36 H                |   108.41
+   35 H                |  34 C                |  37 H                |   108.11
+   36 H                |  34 C                |  37 H                |   108.62
+   33 C                |  38 C                |  39 H                |   110.24
+   33 C                |  38 C                |  40 H                |   110.81
+   33 C                |  38 C                |  41 H                |   110.14
+   39 H                |  38 C                |  40 H                |   108.31
+   39 H                |  38 C                |  41 H                |   108.54
+   40 H                |  38 C                |  41 H                |   108.73
+    4 O                |  42 C                |   7 N                |   114.32
+    4 O                |  42 C                |  70 B                |   120.78
+    7 N                |  42 C                |  70 B                |   124.89
+    4 O                |  43 C                |  44 H                |   107.51
+    4 O                |  43 C                |  45 H                |   107.51
+    4 O                |  43 C                |  46 C                |   104.65
+   44 H                |  43 C                |  45 H                |   110.03
+   44 H                |  43 C                |  46 C                |   113.37
+   45 H                |  43 C                |  46 C                |   113.30
+    7 N                |  46 C                |  43 C                |   102.60
+    7 N                |  46 C                |  47 C                |   109.37
+    7 N                |  46 C                |  51 C                |   109.80
+   43 C                |  46 C                |  47 C                |   111.64
+   43 C                |  46 C                |  51 C                |   111.16
+   47 C                |  46 C                |  51 C                |   111.87
+   46 C                |  47 C                |  48 H                |   110.40
+   46 C                |  47 C                |  49 H                |   110.53
+   46 C                |  47 C                |  50 H                |   110.49
+   48 H                |  47 C                |  49 H                |   108.25
+   48 H                |  47 C                |  50 H                |   108.54
+   49 H                |  47 C                |  50 H                |   108.57
+   46 C                |  51 C                |  52 H                |   110.54
+   46 C                |  51 C                |  53 H                |   110.45
+   46 C                |  51 C                |  54 H                |   110.40
+   52 H                |  51 C                |  53 H                |   108.11
+   52 H                |  51 C                |  54 H                |   108.62
+   53 H                |  51 C                |  54 H                |   108.65
+   56 C                |  55 C                |  64 C                |   116.67
+   56 C                |  55 C                |  70 B                |   118.00
+   64 C                |  55 C                |  70 B                |   125.32
+   55 C                |  56 C                |  57 H                |   119.20
+   55 C                |  56 C                |  58 C                |   122.15
+   57 H                |  56 C                |  58 C                |   118.65
+   56 C                |  58 C                |  59 H                |   119.94
+   56 C                |  58 C                |  60 C                |   119.98
+   59 H                |  58 C                |  60 C                |   120.07
+   58 C                |  60 C                |  61 H                |   120.37
+   58 C                |  60 C                |  62 C                |   119.13
+   61 H                |  60 C                |  62 C                |   120.50
+   60 C                |  62 C                |  63 H                |   119.96
+   60 C                |  62 C                |  64 C                |   120.49
+   63 H                |  62 C                |  64 C                |   119.55
+   55 C                |  64 C                |  62 C                |   121.57
+   55 C                |  64 C                |  65 H                |   119.27
+   62 C                |  64 C                |  65 H                |   119.15
+   20 C                |  66 C                |  67 H                |   110.68
+   20 C                |  66 C                |  68 H                |   110.43
+   20 C                |  66 C                |  69 H                |   110.31
+   67 H                |  66 C                |  68 H                |   108.50
+   67 H                |  66 C                |  69 H                |   108.26
+   68 H                |  66 C                |  69 H                |   108.59
+   28 C                |  70 B                |  29 C                |   102.28
+   28 C                |  70 B                |  42 C                |   102.40
+   28 C                |  70 B                |  55 C                |   112.59
+   29 C                |  70 B                |  42 C                |   105.04
+   29 C                |  70 B                |  55 C                |   112.93
+   42 C                |  70 B                |  55 C                |   119.70
+ ------------------------------------------------------------------------------
+                            number of included internuclear angles:        147
+ ==============================================================================
+
+
+
+  library name resolved from: environment
+  library file name is: </work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/>
+  
+                      Basis "ao basis" -> "" (cartesian)
+                      -----
+  Fe (Iron)
+  ---------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  2.05130280E+01  0.234714
+  1 S  9.77679200E+00 -0.877527
+  1 S  4.57359900E+00 -0.341636
+ 
+  2 S  1.94991000E+00  1.000000
+ 
+  3 S  7.66488000E-01  1.000000
+ 
+  4 S  1.00798000E-01  1.000000
+ 
+  5 S  3.75160000E-02  1.000000
+ 
+  6 S  1.00000000E-02  1.000000
+ 
+  7 P  6.31253260E+01  0.027147
+  7 P  1.16568550E+01 -1.011875
+ 
+  8 P  5.17866100E+00  0.215168
+  8 P  2.03553200E+00  0.825095
+ 
+  9 P  7.08818000E-01  1.000000
+ 
+ 10 P  1.10168000E-01  1.000000
+ 
+ 11 P  2.94440000E-02  1.000000
+ 
+ 12 D  3.36667900E+01  0.036529
+ 12 D  1.02356950E+01  0.182825
+ 12 D  3.46648800E+00  0.437069
+ 12 D  1.12729600E+00  0.575178
+ 
+ 13 D  3.08247000E-01  1.000000
+ 
+ 14 D  8.00000000E-02  1.000000
+ 
+ 15 F  2.00000000E+00  1.000000
+ 
+  B (Boron)
+  ---------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  2.85889000E+03  0.002154
+  1 S  4.28140000E+02  0.016582
+  1 S  9.75282000E+01  0.082187
+  1 S  2.79693000E+01  0.276618
+  1 S  8.21577000E+00  0.629316
+  1 S  1.11278000E+00  0.173770
+ 
+  2 S  1.32415000E+01  0.117443
+  2 S  3.00166000E+00  0.918002
+  2 S  9.12856000E-01 -0.002651
+ 
+  3 P  1.32415000E+01  0.041810
+  3 P  3.00166000E+00  0.236575
+  3 P  9.12856000E-01  0.816214
+ 
+  4 S  3.15454000E-01  1.000000
+ 
+  5 P  3.15454000E-01  1.000000
+ 
+  6 S  9.88563000E-02  1.000000
+ 
+  7 P  9.88563000E-02  1.000000
+ 
+  C (Carbon)
+  ----------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  4.56324000E+03  0.001967
+  1 S  6.82024000E+02  0.015231
+  1 S  1.54973000E+02  0.076127
+  1 S  4.44553000E+01  0.260801
+  1 S  1.30290000E+01  0.616462
+  1 S  1.82773000E+00  0.221006
+ 
+  2 S  2.09642000E+01  0.114660
+  2 S  4.80331000E+00  0.919999
+  2 S  1.45933000E+00 -0.003031
+ 
+  3 P  2.09642000E+01  0.040249
+  3 P  4.80331000E+00  0.237594
+  3 P  1.45933000E+00  0.815854
+ 
+  4 S  4.83456000E-01  1.000000
+ 
+  5 P  4.83456000E-01  1.000000
+ 
+  6 S  1.45585000E-01  1.000000
+ 
+  7 P  1.45585000E-01  1.000000
+ 
+  O (Oxygen)
+  ----------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  8.58850000E+03  0.001895
+  1 S  1.29723000E+03  0.014386
+  1 S  2.99296000E+02  0.070732
+  1 S  8.73771000E+01  0.240001
+  1 S  2.56789000E+01  0.594797
+  1 S  3.74004000E+00  0.280802
+ 
+  2 S  4.21175000E+01  0.113889
+  2 S  9.62837000E+00  0.920811
+  2 S  2.85332000E+00 -0.003274
+ 
+  3 P  4.21175000E+01  0.036511
+  3 P  9.62837000E+00  0.237153
+  3 P  2.85332000E+00  0.819702
+ 
+  4 S  9.05661000E-01  1.000000
+ 
+  5 P  9.05661000E-01  1.000000
+ 
+  6 S  2.55611000E-01  1.000000
+ 
+  7 P  2.55611000E-01  1.000000
+ 
+  N (Nitrogen)
+  ------------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  6.29348000E+03  0.001970
+  1 S  9.49044000E+02  0.014961
+  1 S  2.18776000E+02  0.073501
+  1 S  6.36916000E+01  0.248937
+  1 S  1.88282000E+01  0.602460
+  1 S  2.72023000E+00  0.256202
+ 
+  2 S  3.06331000E+01  0.111906
+  2 S  7.02614000E+00  0.921666
+  2 S  2.11205000E+00 -0.002569
+ 
+  3 P  3.06331000E+01  0.038312
+  3 P  7.02614000E+00  0.237403
+  3 P  2.11205000E+00  0.817592
+ 
+  4 S  6.84009000E-01  1.000000
+ 
+  5 P  6.84009000E-01  1.000000
+ 
+  6 S  2.00878000E-01  1.000000
+ 
+  7 P  2.00878000E-01  1.000000
+ 
+  H (Hydrogen)
+  ------------
+            Exponent  Coefficients 
+       -------------- ---------------------------------------------------------
+  1 S  3.38650000E+01  0.025494
+  1 S  5.09479000E+00  0.190373
+  1 S  1.15879000E+00  0.852161
+ 
+  2 S  3.25840000E-01  1.000000
+ 
+  3 S  1.02741000E-01  1.000000
+ 
+
+
+ Summary of "ao basis" -> "" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Fe                  Stuttgart RSC 1997 ECP         15       49   6s5p3d1f
+ B                           6-311g                  7       13   4s3p
+ C                           6-311g                  7       13   4s3p
+ O                           6-311g                  7       13   4s3p
+ N                           6-311g                  7       13   4s3p
+ H                           6-311g                  3        3   3s
+
+
+  library name resolved from: environment
+  library file name is: </work/LAS/twindus-lab/nwchem/6.6-intel/data/libraries/>
+  
+
+ **** WARNING Zero Coefficient **** on atom "              Fe"
+ angular momentum value:-1  standard basis set name: "Stuttgart RSC 1997 ECP"
+ input line that generated warning:
+  3105: 2      1.000000000            0.000000000
+  
+ Local ECP potential is zero and ignored
+  
+                 ECP       "ecp basis" -> "" (cartesian)
+                -----
+  Fe (Iron) Replaces    10 electrons
+  ----------------------------------
+          R-exponent    Exponent     Coefficients 
+         ------------ ---------------------------------------------------------
+  1 U-s      2.00       20.930000     253.749588
+  1 U-s      2.00        9.445000      37.922845
+ 
+  2 U-p      2.00       21.760000     161.036812
+  2 U-p      2.00        9.178000      27.651298
+ 
+  3 U-d      2.00       25.900000     -24.431276
+  3 U-d      2.00        8.835000      -1.434251
+ 
+                                 NWChem SCF Module
+                                 -----------------
+ 
+ 
+
+  ao basis        = "ao basis"
+  functions       =   612
+  atoms           =    72
+  closed shells   =   134
+  open shells     =     2
+  charge          =   0.00
+  wavefunction    = ROHF
+  input vectors   = atomic
+  output vectors  = ./tomfe_opt2.movecs
+  use symmetry    = F
+  symmetry adapt  = F
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Fe                  Stuttgart RSC 1997 ECP         15       49   6s5p3d1f
+ B                           6-311g                  7       13   4s3p
+ C                           6-311g                  7       13   4s3p
+ O                           6-311g                  7       13   4s3p
+ N                           6-311g                  7       13   4s3p
+ H                           6-311g                  3        3   3s
+
+
+
+ Forming initial guess at       0.3s
+
+ 
+      Superposition of Atomic Density Guess
+      -------------------------------------
+ 
+ Sum of atomic energies:       -1621.02946424
+ 
+      Non-variational initial energy
+      ------------------------------
+
+ Total energy =   -1631.486464
+ 1-e energy   =  -11228.562821
+ 2-e energy   =    5077.208351
+ HOMO         =      -0.245544
+ LUMO         =      -0.216332
+ 
+
+ Starting SCF solution at      13.5s
+
+
+
+ ----------------------------------------------
+         Quadratically convergent ROHF
+
+ Convergence threshold     :          1.000E-06
+ Maximum no. of iterations :          200
+ Final Fock-matrix accuracy:          1.000E-09
+ ----------------------------------------------
+
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1    -1615.4511053172  3.69D+00  6.70D-01    101.8
