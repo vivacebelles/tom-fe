@@ -1,1 +1,4 @@
 tee: /home/alolinco/tom-fe/tomfe_opt6311g/tomfebn_1fe03/tomfebn_opt2.out: Stale file handle
+cp: cannot stat ‘/scratch/alolinco/301849/ecce*’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/301849/*log’: No such file or directory
+cp: cannot stat ‘/scratch/alolinco/301849/*out’: No such file or directory
