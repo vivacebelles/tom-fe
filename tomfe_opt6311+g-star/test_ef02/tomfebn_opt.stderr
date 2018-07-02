@@ -1,1 +1,4 @@
 tee: /home/alolinco/tom-fe/tomfe_opt6311+g-star/test_ef02/tomfebn_opt.out: Stale file handle
+slurmstepd: error: *** JOB 301295 ON condo180 CANCELLED AT 2018-07-02T11:42:41 DUE TO TIME LIMIT ***
+slurmstepd: error: unlink(/tmp/slurmd/job301295/slurm_script): No such file or directory
+slurmstepd: error: rmdir(/tmp/slurmd/job301295): No such file or directory
