@@ -1,0 +1,36 @@
+#!/bin/bash
+#PBS -q default
+#PBS -l walltime=300:00:00
+#PBS -l nodes=4:ppn=16
+#PBS -W x=NACCESSPOLICY:SHARED
+#PBS -N tomfebn_opt
+#PBS -e tomfebn_opt.stderr
+#PBS -o tomfebn_opt.stdout
+
+
+#Set job specific environment variables
+nodes=($(uniq $PBS_NODEFILE))
+scr=/var/scratch/alolinco/tomfebn_opt
+jobdir=/home/alolinco/tom-fe/tomfe_opt6311+g-star/hop01
+export ARMCI_DEFAULT_SHMMAX=8000
+
+#Set environment variables for the nwchem version
+source /home/weverett/nwchem/6.5-all/env
+# Old way of setting stuff
+
+#Print node information and copy files for job
+printf "===$(date +"%Y-%m-%d-%r") run nodes===\n$nodes \n" >> $jobdir/tomfebn_opt.nodes
+# for i in ${nodes}; do ssh $i "mkdir -p $scr";done
+pbsdsh -u [ ! -d $scr ] && mkdir -p $scr
+pbsdsh -u cp $jobdir/{tomfebn_opt.nw,*.movecs,*.hess,*.db} $scr
+
+
+#eval `/usr/bin/modulecmd bash load nwchem/6.5-all`
+ulimit -s unlimited
+ulimit -c unlimited
+cd $scr
+mpdboot
+mpiexec -np 64 nwchem tomfebn_opt.nw | tee $jobdir/tomfebn_opt.out
+mpdallexit
+cp $scr/{*db,*movecs,*hess,ecce*,*log,*out} $jobdir 2>/dev/null
+
