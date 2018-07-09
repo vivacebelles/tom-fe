@@ -91,28 +91,8 @@ ecp
  Fe library "Stuttgart RSC 1997 ECP"
 end
 
-scf
- triplet
- direct
- maxiter 200
- thresh 1.0e-6
- tol2e 1.0e-9
+freq
+    animate
 end
 
-task scf energy
-
-dft
- direct
- grid fine
- xc pbe0
- rodft
- cgmin
- mult 3
- maxiter 200
-end
-
-driver
- maxiter 200
-end
-
-task dft optimize
+task dft freq
