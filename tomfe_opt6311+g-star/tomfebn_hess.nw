@@ -92,8 +92,8 @@ ecp
 end
 
 dft
- vectors input tomfe_opt03.movecs
- /output tomfe_hess.movecs
+ vectors input tomfe_opt03.movecs/
+  output tomfehess.movecs
 end
 
 freq
