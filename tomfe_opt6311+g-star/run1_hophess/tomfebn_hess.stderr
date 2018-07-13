@@ -1,0 +1,16 @@
+pbsdsh: task 0 exit status 1
+cp: target `/var/scratch/alolinco/tomfebn_hess' is not a directory
+cp: target `/var/scratch/alolinco/tomfebn_hess' is not a directory
+pbsdsh: task 1 exit status 1
+pbsdsh: task 2 exit status 1
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt6311+g-star/run1_hophess/*.hess': No such file or directory
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt6311+g-star/run1_hophess/*.db': No such file or directory
+pbsdsh: task 0 exit status 1
+[proxy:0:2@compute-0-9.local] launch_procs (pm/pmiserv/pmip_cb.c:652): unable to change wdir to /var/scratch/alolinco/tomfebn_hess (No such file or directory)
+[proxy:0:2@compute-0-9.local] HYD_pmcd_pmip_control_cmd_cb (pm/pmiserv/pmip_cb.c:920): launch_procs returned error
+[proxy:0:2@compute-0-9.local] HYDT_dmxu_poll_wait_for_event (tools/demux/demux_poll.c:76): callback returned error status
+[proxy:0:2@compute-0-9.local] main (pm/pmiserv/pmip.c:206): demux engine error waiting for event
+[mpiexec@compute-0-13.local] control_cb (pm/pmiserv/pmiserv_cb.c:200): assert (!closed) failed
+[mpiexec@compute-0-13.local] HYDT_dmxu_poll_wait_for_event (tools/demux/demux_poll.c:76): callback returned error status
+[mpiexec@compute-0-13.local] HYD_pmci_wait_for_completion (pm/pmiserv/pmiserv_pmci.c:198): error waiting for event
+[mpiexec@compute-0-13.local] main (ui/mpich/mpiexec.c:336): process manager error waiting for completion
