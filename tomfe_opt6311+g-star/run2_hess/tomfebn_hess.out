@@ -1093,3 +1093,179 @@ File balance: exchanges=    71  moved= 40085  time= 188.8
  Requested integration accuracy:   0.10E-05
   Singularity in Pulay matrix. Error and Fock matrices removed. 
  d= 0,ls=0.5,diis    27******************  1.10D+16  1.30D+07  1.24D+38  4172.9
+ Grid integrated density: ********************
+ Requested integration accuracy:   0.10E-05
+  Singularity in Pulay matrix. Error and Fock matrices removed. 
+ d= 0,ls=0.5,diis    28******************  4.12D+19  1.30D+07  9.24D+38  4330.4
+ Grid integrated density:     220.405529174041
+ Requested integration accuracy:   0.10E-05
+  Singularity in Pulay matrix. Error and Fock matrices removed. 
+ 
+ me = 9 Eigenvector 288 failed to convergve in inv_it3 
+ 
+ 
+ me = 10 Eigenvector 315 failed to convergve in inv_it3 
+ 
+ 
+ me = 10 Eigenvector 324 failed to convergve in inv_it3 
+ 
+ 
+ me = 10 Eigenvector 326 failed to convergve in inv_it3 
+ 
+ 
+ me = 9 MAXITS exceeded in inv_it 
+ 
+ c1= 287 cn= 288 b1= 287 bn = 288 
+ nrm = 1.06356 stpcrt = 1.11803 
+xj = 1.280000e+02 onenrm = 1.828560e+01 
+d[287] = -1.068037e+01 e[287] = 7.068156e+00 
+d[288] = -1.073954e+01 e[288] = -7.546053e+00 
+ 
+ me = 10 MAXITS exceeded in inv_it 
+ 
+ c1= 314 cn= 315 b1= 314 bn = 315 
+ nrm = 1.06103 stpcrt = 1.11803 
+xj = 1.280000e+02 onenrm = 1.949290e+01 
+d[314] = -1.200993e+01 e[314] = 7.038081e+00 
+d[315] = -1.233694e+01 e[315] = -7.155957e+00 
+ 
+ me = 10 MAXITS exceeded in inv_it 
+ 
+ c1= 323 cn= 324 b1= 323 bn = 324 
+ nrm = 1.06799 stpcrt = 1.11803 
+xj = 1.280000e+02 onenrm = 1.870189e+01 
+d[323] = -1.118051e+01 e[323] = 7.007562e+00 
+d[324] = -1.126481e+01 e[324] = -7.437076e+00 
+ 
+ me = 10 MAXITS exceeded in inv_it 
+ 
+ c1= 325 cn= 326 b1= 325 bn = 326 
+ nrm = 1.07668 stpcrt = 1.11803 
+xj = 1.280000e+02 onenrm = 1.934992e+01 
+d[325] = -1.183024e+01 e[325] = 7.026664e+00 
+d[326] = -1.202102e+01 e[326] = 7.328900e+00 
+ Error in pdspevx. me = 0 pstein returned info = 289 
+ Error in pdspevx. me = 1 pstein returned info = 289 
+ Error in pdspevx. me = 2 pstein returned info = 289 
+ Error in pdspevx. me = 3 pstein returned info = 289 
+ Error in pdspevx. me = 4 pstein returned info = 289 
+ Error in pdspevx. me = 5 pstein returned info = 289 
+ Error in pdspevx. me = 6 pstein returned info = 289 
+ Error in pdspevx. me = 7 pstein returned info = 289 
+ Error in pdspevx. me = 8 pstein returned info = 289 
+ Error in pdspevx. me = 9 pstein returned info = 289 
+ Error in pdspevx. me = 10 pstein returned info = 289 
+ Error in pdspevx. me = 11 pstein returned info = 289 
+ Error in pdspevx. me = 24 pstein returned info = 289 
+ Error in pdspevx. me = 25 pstein returned info = 289 
+ Error in pdspevx. me = 26 pstein returned info = 289 
+ Error in pdspevx. me = 27 pstein returned info = 289 
+ Error in pdspevx. me = 28 pstein returned info = 289 
+ Error in pdspevx. me = 29 pstein returned info = 289 
+ Error in pdspevx. me = 30 pstein returned info = 289 
+ Error in pdspevx. me = 12 pstein returned info = 289 
+ Error in pdspevx. me = 13 pstein returned info = 289 
+ Error in pdspevx. me = 14 pstein returned info = 289 
+ Error in pdspevx. me = 15 pstein returned info = 289 
+ Error in pdspevx. me = 16 pstein returned info = 289 
+ Error in pdspevx. me = 17 pstein returned info = 289 
+ Error in pdspevx. me = 18 pstein returned info = 289 
+ Error in pdspevx. me = 19 pstein returned info = 289 
+ Error in pdspevx. me = 20 pstein returned info = 289 
+ Error in pdspevx. me = 21 pstein returned info = 289 
+ Error in pdspevx. me = 22 pstein returned info = 289 
+ Error in pdspevx. me = 23 pstein returned info = 289 
+24:24:gai_diag_std: ... info non-zero:: 24
+(rank:24 hostname:condo187 pid:29441):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+25:25:gai_diag_std: ... info non-zero:: 25
+(rank:25 hostname:condo187 pid:29442):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+12:12:gai_diag_std: ... info non-zero:: 12
+(rank:12 hostname:condo185 pid:24218):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+0:0:gai_diag_std: ... info non-zero:: -1
+(rank:0 hostname:condo179 pid:29442):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+26:26:gai_diag_std: ... info non-zero:: 26
+(rank:26 hostname:condo187 pid:29443):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+13:13:gai_diag_std: ... info non-zero:: 13
+(rank:13 hostname:condo185 pid:24219):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+1:1:gai_diag_std: ... info non-zero:: 1
+(rank:1 hostname:condo179 pid:29443):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+27:27:gai_diag_std: ... info non-zero:: 27
+(rank:27 hostname:condo187 pid:29444):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+14:14:gai_diag_std: ... info non-zero:: 14
+(rank:14 hostname:condo185 pid:24220):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+2:2:gai_diag_std: ... info non-zero:: 2
+(rank:2 hostname:condo179 pid:29444):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+28:28:gai_diag_std: ... info non-zero:: 28
+(rank:28 hostname:condo187 pid:29445):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+15:15:gai_diag_std: ... info non-zero:: 15
+(rank:15 hostname:condo185 pid:24221):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+3:3:gai_diag_std: ... info non-zero:: 3
+(rank:3 hostname:condo179 pid:29445):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+16:16:gai_diag_std: ... info non-zero:: 16
+(rank:16 hostname:condo185 pid:24222):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+4:4:gai_diag_std: ... info non-zero:: 4
+(rank:4 hostname:condo179 pid:29446):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+29:29:gai_diag_std: ... info non-zero:: 29
+(rank:29 hostname:condo187 pid:29446):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+5:5:gai_diag_std: ... info non-zero:: 5
+(rank:5 hostname:condo179 pid:29447):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+30:30:gai_diag_std: ... info non-zero:: 30
+(rank:30 hostname:condo187 pid:29447):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+6:6:gai_diag_std: ... info non-zero:: 6
+(rank:6 hostname:condo179 pid:29448):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 24:: No such file or directory
+17:17:gai_diag_std: ... info non-zero:: 17
+(rank:17 hostname:condo185 pid:24223):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+7:7:gai_diag_std: ... info non-zero:: 7
+(rank:7 hostname:condo179 pid:29449):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 25:: No such file or directory
+18:18:gai_diag_std: ... info non-zero:: 18
+(rank:18 hostname:condo185 pid:24224):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+8:8:gai_diag_std: ... info non-zero:: 8
+(rank:8 hostname:condo179 pid:29450):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 26:: No such file or directory
+19:19:gai_diag_std: ... info non-zero:: 19
+(rank:19 hostname:condo185 pid:24225):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+9:9:gai_diag_std: ... info non-zero:: 9
+(rank:9 hostname:condo179 pid:29451):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 27:: No such file or directory
+20:20:gai_diag_std: ... info non-zero:: 20
+(rank:20 hostname:condo185 pid:24226):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+10:10:gai_diag_std: ... info non-zero:: 10
+(rank:10 hostname:condo179 pid:29452):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 28:: No such file or directory
+21:21:gai_diag_std: ... info non-zero:: 21
+(rank:21 hostname:condo185 pid:24227):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+11:11:gai_diag_std: ... info non-zero:: 11
+(rank:11 hostname:condo179 pid:29453):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 29:: No such file or directory
+22:22:gai_diag_std: ... info non-zero:: 22
+(rank:22 hostname:condo185 pid:24228):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 0:: Inappropriate ioctl for device
+Last System Error Message from Task 30:: No such file or directory
+23:23:gai_diag_std: ... info non-zero:: 23
+(rank:23 hostname:condo185 pid:24229):ARMCI DASSERT fail. ../../ga-5-4/armci/src/common/armci.c:ARMCI_Error():208 cond:0
+Last System Error Message from Task 1:: No such file or directory
+Last System Error Message from Task 12:: No such file or directory
+Last System Error Message from Task 2:: No such file or directory
+Last System Error Message from Task 13:: No such file or directory
+Last System Error Message from Task 3:: No such file or directory
+Last System Error Message from Task 14:: No such file or directory
+Last System Error Message from Task 4:: No such file or directory
+Last System Error Message from Task 15:: No such file or directory
+Last System Error Message from Task 5:: No such file or directory
+Last System Error Message from Task 16:: No such file or directory
+Last System Error Message from Task 6:: No such file or directory
+Last System Error Message from Task 17:: No such file or directory
+Last System Error Message from Task 7:: No such file or directory
+Last System Error Message from Task 18:: No such file or directory
+Last System Error Message from Task 8:: No such file or directory
+Last System Error Message from Task 19:: No such file or directory
+Last System Error Message from Task 9:: No such file or directory
+Last System Error Message from Task 20:: No such file or directory
+Last System Error Message from Task 10:: No such file or directory
+Last System Error Message from Task 21:: No such file or directory
+Last System Error Message from Task 11:: No such file or directory
+Last System Error Message from Task 22:: No such file or directory
+Last System Error Message from Task 23:: No such file or directory
+application called MPI_Abort(comm=0x84000004, 1) - process 1
