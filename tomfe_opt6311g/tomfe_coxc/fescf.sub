@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -q default
-#PBS -l walltime=150:00:00
-#PBS -l nodes=3:ppn=12
+#PBS -l walltime=100:00:00
+#PBS -l nodes=4:ppn=16
 #PBS -W x=NACCESSPOLICY:SHARED
 #PBS -N fescf
 #PBS -e fescf.stderr
@@ -11,7 +11,7 @@
 #Set job specific environment variables
 nodes=`uniq $PBS_NODEFILE`
 scr=/var/scratch/alolinco/fescf
-jobdir=/home/alolinco/tom-fe/tomfe_opt6311g/tomfe_coxc
+jobdir=/home/alolinco/tom-fe/tom-fe/tomfe_opt6311g/tomfe_coxc
 export ARMCI_DEFAULT_SHMMAX=8000
 
 #Set environment variables for the nwchem version
@@ -47,7 +47,7 @@ ulimit -s unlimited
 ulimit -c unlimited
 cd $scr
 mpdboot
-mpiexec -np 36 nwchem fescf.nw | tee $jobdir/fescf.out
+mpiexec -np 64 nwchem fescf.nw | tee $jobdir/fescf.out
 mpdallexit
 cp $scr/*.db $jobdir
 cp $scr/*.movecs $jobdir
