@@ -1,0 +1,163 @@
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt631g/fescf01/*.movecs': No such file or directory
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt631g/fescf01/*.hess': No such file or directory
+Last System Error Message from Task 22:: Invalid argument
+Last System Error Message from Task 23:: Invalid argument
+Last System Error Message from Task 26:: Invalid argument
+Last System Error Message from Task 34:: Invalid argument
+Last System Error Message from Task 27:: Invalid argument
+Last System Error Message from Task 35:: Invalid argument
+Last System Error Message from Task 30:: Invalid argument
+Last System Error Message from Task 40:: Invalid argument
+Last System Error Message from Task 31:: Invalid argument
+Last System Error Message from Task 48:: Invalid argument
+Last System Error Message from Task 41:: Invalid argument
+Last System Error Message from Task 16:: Invalid argument
+Last System Error Message from Task 49:: Invalid argument
+Last System Error Message from Task 44:: Invalid argument
+Last System Error Message from Task 17:: Invalid argument
+Last System Error Message from Task 50:: Invalid argument
+Last System Error Message from Task 45:: Invalid argument
+Last System Error Message from Task 18:: Invalid argument
+Last System Error Message from Task 51:: Invalid argument
+Last System Error Message from Task 46:: Invalid argument
+Last System Error Message from Task 19:: Invalid argument
+Last System Error Message from Task 52:: Invalid argument
+Last System Error Message from Task 47:: Invalid argument
+Last System Error Message from Task 20:: Invalid argument
+Last System Error Message from Task 53:: Invalid argument
+Last System Error Message from Task 33:: Invalid argument
+Last System Error Message from Task 21:: Invalid argument
+Last System Error Message from Task 54:: Invalid argument
+Last System Error Message from Task 36:: Invalid argument
+Last System Error Message from Task 25:: Invalid argument
+Last System Error Message from Task 55:: Invalid argument
+Last System Error Message from Task 37:: Invalid argument
+Last System Error Message from Task 28:: Invalid argument
+Last System Error Message from Task 56:: Invalid argument
+Last System Error Message from Task 38:: Invalid argument
+Last System Error Message from Task 29:: Invalid argument
+Last System Error Message from Task 57:: Invalid argument
+Last System Error Message from Task 39:: Invalid argument
+Last System Error Message from Task 58:: Invalid argument
+Last System Error Message from Task 42:: Invalid argument
+Last System Error Message from Task 59:: Invalid argument
+Last System Error Message from Task 43:: Invalid argument
+Last System Error Message from Task 60:: Invalid argument
+Last System Error Message from Task 1:: Invalid argument
+Last System Error Message from Task 61:: Invalid argument
+Last System Error Message from Task 14:: Invalid argument
+Last System Error Message from Task 62:: Invalid argument
+Last System Error Message from Task 15:: Invalid argument
+Last System Error Message from Task 63:: Invalid argument
+Last System Error Message from Task 32:: Invalid argument
+Last System Error Message from Task 2:: Invalid argument
+Last System Error Message from Task 3:: Invalid argument
+Last System Error Message from Task 4:: Invalid argument
+Last System Error Message from Task 5:: Invalid argument
+Last System Error Message from Task 7:: Invalid argument
+Last System Error Message from Task 8:: Invalid argument
+Last System Error Message from Task 9:: Invalid argument
+Last System Error Message from Task 10:: Invalid argument
+Last System Error Message from Task 11:: Invalid argument
+Last System Error Message from Task 12:: Invalid argument
+Last System Error Message from Task 13:: Invalid argument
+Last System Error Message from Task 6:: Invalid argument
+Last System Error Message from Task 0:: Inappropriate ioctl for device
+[cli_56]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 56
+[cli_60]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 60
+[cli_61]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 61
+[cli_63]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 63
+[cli_54]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 54
+[cli_57]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 57
+[cli_59]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 59
+[cli_62]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 62
+[cli_49]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 49
+[cli_13]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 13
+[cli_44]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 44
+Last System Error Message from Task 24:: Invalid argument
+[cli_31]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 31
+[cli_1]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 1
+[cli_7]: [cli_33]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 33
+[cli_11]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 11
+[cli_12]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 12
+[cli_2]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 2
+[cli_3]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 3
+[cli_6]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 6
+[cli_8]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 8
+[cli_9]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 9
+[cli_4]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 4
+[cli_5]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 5
+[cli_14]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 14
+[cli_15]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 15
+aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 7
+[cli_34]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 34
+[cli_45]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 45
+[cli_36]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 36
+[cli_37]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 37
+[cli_10]: [cli_42]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 42
+[cli_43]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 43
+[cli_46]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 46
+aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 10
+[cli_47]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 47
+[cli_35]: [cli_17]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 17
+[cli_38]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 38
+[cli_26]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 26
+aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 35
+[cli_30]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 30
+[cli_18]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 18
+[cli_40]: [cli_41]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 41
+[cli_39]: aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 39
+aborting job:
+application called MPI_Abort(comm=0x84000004, -1) - process 40
+[proxy:0:0@compute-0-13.local] HYDU_sock_write (utils/sock/sock.c:286): write error (Broken pipe)
+[proxy:0:0@compute-0-13.local] main (pm/pmiserv/pmip.c:265): unable to send EXIT_STATUS command upstream
+[mpiexec@compute-0-13.local] HYDT_bscu_wait_for_completion (tools/bootstrap/utils/bscu_wait.c:76): one of the processes terminated badly; aborting
+[mpiexec@compute-0-13.local] HYDT_bsci_wait_for_completion (tools/bootstrap/src/bsci_wait.c:23): launcher returned error waiting for completion
+[mpiexec@compute-0-13.local] HYD_pmci_wait_for_completion (pm/pmiserv/pmiserv_pmci.c:218): launcher returned error waiting for completion
+[mpiexec@compute-0-13.local] main (ui/mpich/mpiexec.c:336): process manager error waiting for completion
+cp: cannot stat `/var/scratch/alolinco/fescf/ecce*': No such file or directory
+cp: cannot stat `/var/scratch/alolinco/fescf/*.log': No such file or directory
+cp: cannot stat `/var/scratch/alolinco/fescf/*.out': No such file or directory
