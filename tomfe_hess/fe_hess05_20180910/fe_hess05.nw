@@ -98,7 +98,7 @@ dft
  rodft
  cgmin
  mult 3
- maxiter 200
+ maxiter 100
  vectors input feopt01_6311+g-star.movecs \
   	 output fe_hess05.movecs
 end
