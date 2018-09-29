@@ -1,0 +1,4 @@
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_hess/fe_hess05_20180910/*.hess': No such file or directory
+cp: cannot stat `/var/scratch/alolinco/fe_hess05/ecce*': No such file or directory
+cp: cannot stat `/var/scratch/alolinco/fe_hess05/*.log': No such file or directory
+cp: cannot stat `/var/scratch/alolinco/fe_hess05/*.out': No such file or directory
