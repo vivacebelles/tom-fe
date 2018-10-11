@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -q default
-#PBS -l walltime=100:00:00
+#PBS -l walltime=200:00:00
 #PBS -l nodes=3:ppn=12
 #PBS -W x=NACCESSPOLICY:SHARED
 #PBS -N feopt
