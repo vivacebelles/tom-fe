@@ -13012,3 +13012,259 @@ task dft optimize
   charge          =   0.00
   wavefunction    = open shell
 
+
+
+                         DFT ENERGY GRADIENTS
+
+    atom               coordinates                        gradient
+                 x          y          z           x          y          z
+   1 Fe     -0.023074   2.317145   0.661154   -0.000070  -0.005746  -0.003154
+   2 B      -0.424241  -3.289509  -0.016147    0.000931  -0.014784  -0.003223
+   3 C      -3.816078   0.886545   6.635601    0.000954  -0.000145   0.000581
+   4 H      -2.736424  -0.779787   7.214823    0.000320  -0.000016   0.000393
+   5 H      -5.347902   1.168694   7.995646   -0.000059  -0.000447  -0.001047
+   6 H      -2.551961   2.511719   6.705575    0.000358  -0.000253  -0.000598
+   7 C      -4.895567   0.534963   3.983655    0.001192  -0.002672   0.004728
+   8 C      -6.550757   2.737511   3.185561    0.000929   0.000653  -0.000948
+   9 H      -5.506022   4.514846   3.306814    0.000925   0.000071  -0.000638
+  10 H      -8.213252   2.871413   4.403169    0.001269  -0.001690  -0.000242
+  11 H      -7.184919   2.496347   1.232171    0.000241  -0.000167  -0.000783
+  12 C      -6.250117  -2.021123   3.742032    0.003160  -0.000224   0.001701
+  13 H      -6.877190  -2.797197   5.548315   -0.001474   0.001163   0.000339
+  14 H      -7.868519  -1.938354   2.453392   -0.000028  -0.000169   0.000185
+  15 C      -2.508251  -2.198610   1.812781    0.025536  -0.009931   0.021087
+  16 C       1.367375   2.880605  -6.174359    0.001608  -0.001057  -0.000010
+  17 H       1.656339   4.552355  -5.000816   -0.000734  -0.000656   0.000596
+  18 H       1.168421   3.489307  -8.140743   -0.000983  -0.000884   0.000440
+  19 H       3.045526   1.681040  -6.024434    0.000689  -0.000234   0.000130
+  20 C      -0.985497   1.453994  -5.341806    0.001056  -0.001848   0.000985
+  21 C      -3.344066   3.098188  -5.476244   -0.001906  -0.000912   0.000534
+  22 H      -5.008421   2.050002  -4.835213   -0.000717  -0.000473   0.000312
+  23 H      -3.663090   3.715259  -7.423202    0.001286  -0.001110   0.000249
+  24 H      -3.116876   4.772330  -4.289954    0.000968  -0.000693   0.000318
+  25 C      -1.329047  -1.016841  -6.843953   -0.000567  -0.000187  -0.005786
+  26 H      -3.171768  -1.205258  -7.754675    0.000002  -0.001996   0.001121
+  27 H       0.166026  -1.368438  -8.225432    0.000307  -0.001414   0.000621
+  28 C      -0.754874  -1.889359  -2.686392    0.003412  -0.017536   0.003585
+  29 C       6.260240   1.255049   4.302346   -0.001783   0.000632   0.000769
+  30 H       5.963355   3.261283   3.923559   -0.000846   0.000071  -0.000536
+  31 H       8.223594   0.992541   4.893496   -0.000780  -0.001169  -0.001371
+  32 H       5.024826   0.711050   5.867558   -0.000455   0.000142   0.000544
+  33 C       5.725259  -0.333341   1.972169    0.002835  -0.003098   0.002438
+  34 C       7.222622   0.566824  -0.322294   -0.001172  -0.000024  -0.001456
+  35 H       6.927155  -0.705521  -1.926419   -0.000463  -0.000202  -0.000585
+  36 H       9.242896   0.623222   0.112876   -0.001119  -0.000497   0.001349
+  37 H       6.609175   2.453733  -0.896431   -0.000964   0.000253  -0.000208
+  38 C       6.145484  -3.165658   2.471218   -0.001285   0.000879  -0.000990
+  39 H       7.849903  -3.912640   1.581830    0.000899   0.001006   0.001379
+  40 H       6.214624  -3.607747   4.494038    0.001128  -0.000048   0.000297
+  41 C       2.245406  -2.549649   1.045936   -0.015088  -0.005153   0.011893
+  42 C      -0.584743  -6.097987  -0.089501   -0.002209   0.011769  -0.003993
+  43 C      -0.629777  -7.469965   2.129924    0.005907   0.026505   0.006320
+  44 H      -0.596386  -6.577678   3.984039   -0.000038   0.000231   0.002477
+  45 C      -0.825936 -10.076072   1.915683   -0.001582   0.002541  -0.007525
+  46 H      -0.938057 -11.205600   3.621208   -0.000469   0.004329  -0.000880
+  47 C      -0.904924 -11.230962  -0.451402   -0.000021   0.003173   0.003086
+  48 H      -1.055537 -13.264855  -0.630306    0.001098   0.002732  -0.002761
+  49 C      -0.758692  -9.770574  -2.620506   -0.002500   0.003425   0.007335
+  50 H      -0.817853 -10.539766  -4.518877   -0.000128   0.009942  -0.000688
+  51 C      -0.536158  -7.177091  -2.429110    0.005704   0.033702  -0.000173
+  52 H      -0.473419  -5.996420  -4.070778   -0.002997   0.013082   0.002303
+  53 C       0.319413   5.040240   3.265303   -0.001339   0.001458   0.001956
+  54 H      -1.408776   5.537657   4.272636    0.000056  -0.000118  -0.000257
+  55 H       1.889734   4.784314   4.575590    0.000497  -0.000256  -0.000339
+  56 C       0.838010   6.673910   1.111562    0.000651   0.001243   0.001123
+  57 C      -1.142571   7.912350  -0.202167   -0.001002  -0.001435  -0.000642
+  58 H      -3.045842   7.825029   0.569396   -0.000089   0.000060   0.000046
+  59 C      -0.683854   9.335352  -2.351685    0.000388   0.000672   0.000087
+  60 H      -2.240514  10.316062  -3.263868    0.000020   0.000032   0.000229
+  61 C       1.753060   9.534825  -3.336484   -0.000442  -0.000648  -0.000223
+  62 H       2.109627  10.668957  -5.008410    0.000058   0.000153   0.000048
+  63 C       3.718876   8.273673  -2.136886    0.000045  -0.000905  -0.000598
+  64 H       5.632031   8.422853  -2.867852    0.000041   0.000347   0.000383
+  65 C       3.273275   6.856229   0.031150    0.000170   0.000863   0.000337
+  66 H       4.848780   5.956139   0.987926    0.000016  -0.000605  -0.000356
+  67 N      -2.814865   0.182277   2.160709   -0.006811  -0.002144  -0.016477
+  68 N      -0.651224   0.521400  -2.741812   -0.002297  -0.011115   0.000119
+  69 N       3.020658  -0.275948   1.300651   -0.004120  -0.006829  -0.009560
+  70 O      -1.169634  -2.951717  -4.967768    0.002611  -0.003945   0.002707
+  71 O      -4.414678  -3.685854   2.630555   -0.007246  -0.008237  -0.011649
+  72 O       3.973618  -4.390774   1.402490   -0.003483  -0.009455  -0.007435
+ 
+                 ----------------------------------------
+                 |  Time  |  1-e(secs)   |  2-e(secs)   |
+                 ----------------------------------------
+                 |  CPU   |       0.42   |     592.96   |
+                 ----------------------------------------
+                 |  WALL  |       1.41   |    1317.42   |
+                 ----------------------------------------
+
+  Step       Energy      Delta E   Gmax     Grms     Xrms     Xmax   Walltime
+  ---- ---------------- -------- -------- -------- -------- -------- --------
+@    1   -1625.91294719 -5.5D-02  0.03370  0.00528  0.03938  0.28006 173334.6
+                                                                    
+
+ Restricting large step in mode   16 eval= 5.3D-02 step=-3.2D-01 new=-3.0D-01
+ Restricting large step in mode   18 eval= 5.9D-02 step= 4.5D-01 new= 3.0D-01
+ Restricting overall step due to large component. alpha=  0.84
+ 
+                                 NWChem DFT Module
+                                 -----------------
+ 
+ 
+
+
+ Summary of "ao basis" -> "ao basis" (cartesian)
+ ------------------------------------------------------------------------------
+       Tag                 Description            Shells   Functions and Types
+ ---------------- ------------------------------  ------  ---------------------
+ Fe                  Stuttgart RSC 1997 ECP         15       49   6s5p3d1f
+ B                          6-311+g*                10       23   5s4p1d
+ C                          6-311+g*                10       23   5s4p1d
+ O                          6-311+g*                10       23   5s4p1d
+ N                          6-311+g*                10       23   5s4p1d
+ H                          6-311+g*                 3        3   3s
+
+
+  Caching 1-el integrals 
+ 
+            General Information
+            -------------------
+          SCF calculation type: DFT
+          Wavefunction type:  restricted open shell.
+          No. of atoms     :    72
+          No. of electrons :   270
+           Alpha electrons :   136
+            Beta electrons :   134
+          Charge           :     0
+          Spin multiplicity:     3
+          Use of symmetry is: off; symmetry adaption is: off
+          Maximum number of iterations: 200
+          This is a Direct SCF calculation.
+          AO basis - number of functions:   962
+                     number of shells:   473
+          Convergence on energy requested: 1.00D-06
+          Convergence on density requested: 1.00D-05
+          Convergence on gradient requested: 5.00D-04
+ 
+              XC Information
+              --------------
+                         PBE0 Method XC Functional
+                     Hartree-Fock (Exact) Exchange  0.250          
+          PerdewBurkeErnzerhof Exchange Functional  0.750          
+            Perdew 1991 LDA Correlation Functional  1.000 local    
+           PerdewBurkeErnz. Correlation Functional  1.000 non-local
+ 
+             Grid Information
+             ----------------
+          Grid used for XC integration:  fine      
+          Radial quadrature: Mura-Knowles        
+          Angular quadrature: Lebedev. 
+          Tag              B.-S. Rad. Rad. Pts. Rad. Cut. Ang. Pts.
+          ---              ---------- --------- --------- ---------
+          Fe                  1.40      140          19.0       974
+          B                   0.85       70          19.0       590
+          C                   0.70       70          25.0       590
+          H                   0.35       60          25.0       590
+          N                   0.65       70          18.0       590
+          O                   0.60       70          21.0       590
+          Grid pruning is: on 
+          Number of quadrature shells:  4750
+          Spatial weights used:  Erf1
+ 
+          Convergence Information
+          -----------------------
+          Convergence aids based upon iterative change in 
+          total energy or number of iterations. 
+          Levelshifting, if invoked, occurs when the 
+          HOMO/LUMO gap drops below (HL_TOL): 1.00D-02
+          DIIS, if invoked, will attempt to extrapolate 
+          using up to (NFOCK): 10 stored Fock matrices.
+
+                    Damping( 0%)  Levelshifting(0.5)       DIIS
+                  --------------- ------------------- ---------------
+          dE  on:    start            ASAP                start   
+          dE off:    2 iters        200 iters           200 iters 
+
+ 
+      Screening Tolerance Information
+      -------------------------------
+          Density screening/tol_rho: 1.00D-10
+          AO Gaussian exp screening on grid/accAOfunc:  14
+          CD Gaussian exp screening on grid/accCDfunc:  20
+          XC Gaussian exp screening on grid/accXCfunc:  20
+          Schwarz screening/accCoul: 1.00D-08
+
+
+ !! The overlap matrix has  18 vectors deemed linearly dependent with
+    eigenvalues:
+ 3.81D-07 6.26D-07 7.50D-07 9.52D-07 1.57D-06 1.66D-06 1.88D-06 2.68D-06
+ 2.89D-06 3.25D-06 4.37D-06 4.58D-06 5.07D-06 5.45D-06 6.11D-06 7.18D-06
+ 7.98D-06 9.55D-06
+ 
+
+ !! nbf/nmo/basis-name mismatch 
+           nbf= 962 nbf_file= 962
+           nmo= 944 nmo_file= 943
+           basis="ao basis" basis_file="ao basis"
+
+  Either an incorrect movecs file was 
+ specified, or linear dependence has changed,
+  or the basis name was changed. 
+
+ Loading old vectors from job with title :
+
+
+
+ 
+  Load of old vectors failed.   Forcing atomic density guess
+ 
+ 
+      Superposition of Atomic Density Guess
+      -------------------------------------
+ 
+ Sum of atomic energies:       -1621.05431509
+ 
+      Non-variational initial energy
+      ------------------------------
+
+ Total energy =   -1633.502968
+ 1-e energy   =  -11405.346159
+ 2-e energy   =    5162.026107
+ HOMO         =      -0.255100
+ LUMO         =      -0.228080
+ 
+
+
+ ----------------------------------------------
+         Quadratically convergent ROKS
+
+ Convergence threshold     :          5.000E-04
+ Maximum no. of iterations :          200
+ Final Fock-matrix accuracy:          1.000E-10
+ ----------------------------------------------
+
+
+ Grid_pts file          = ./feopt27_6311+g-star.gridpts.00
+ Record size in doubles =  12289        No. of grid_pts per rec  =   3070
+ Max. records in memory =     48        Max. recs in file   =    708830
+
+ Grid integrated density:     270.000046886244
+ Requested integration accuracy:   0.10E-06
+
+              iter       energy          gnorm     gmax       time
+             ----- ------------------- --------- --------- --------
+                 1    -1625.0350206479  4.15D+00  6.79D-01  84013.6
+ Grid integrated density:     270.000044500845
+ Requested integration accuracy:   0.10E-06
+ Grid integrated density:     270.000044818688
+ Requested integration accuracy:   0.10E-06
+                 2    -1625.6582153474  1.98D+00  3.28D-01  84764.2
+ Grid integrated density:     270.000031686421
+ Requested integration accuracy:   0.10E-06
+ Grid integrated density:     270.000037099314
+ Requested integration accuracy:   0.10E-06
+                 3    -1625.8422888159  8.21D-01  7.99D-02  85520.1
+ Grid integrated density:     270.000037108274
+ Requested integration accuracy:   0.10E-06
+                 4    -1625.9093842313  1.16D-01  3.25D-02  86832.4
