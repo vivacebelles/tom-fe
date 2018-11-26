@@ -4111,3 +4111,11 @@ task dft optimize
  Grid integrated density:     269.999958913133
  Requested integration accuracy:   0.10E-06
                  4    -1625.9110239880  1.14D-02  2.92D-03  47861.0
+ Grid integrated density:     269.999959513682
+ Requested integration accuracy:   0.10E-06
+ Grid integrated density:     269.999960420432
+ Requested integration accuracy:   0.10E-06
+                 5    -1625.9112821269  1.01D-02  2.03D-03  51177.7
+ Grid integrated density:     269.999960370449
+ Requested integration accuracy:   0.10E-06
+                 6    -1625.9112996675  1.95D-03  7.46D-04  53599.6
