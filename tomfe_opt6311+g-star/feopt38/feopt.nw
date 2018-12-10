@@ -1,0 +1,48 @@
+echo
+
+start feopt38_6311+g-star
+
+geometry units angstroms noautosym noautoz 
+
+end
+
+basis
+ Fe library "Stuttgart RSC 1997 ECP"
+ B library 6-311+g*
+ C library 6-311+g*
+ O library 6-311+g*
+ N library 6-311+g*
+ H library 6-311+g*
+end
+
+ecp
+ Fe library "Stuttgart RSC 1997 ECP"
+end
+
+scf
+ triplet
+ direct
+ maxiter 200
+ thresh 1.0e-6
+ tol2e 1.0e-9
+ vectors output fescf_opt.movecs
+end
+
+task scf energy
+
+dft
+ direct
+ grid fine
+ xc pbe0
+ rodft
+ cgmin
+ mult 3
+ maxiter 200
+ vectors input fescf_opt.movecs output feopt38_6311+g-star.movecs
+end
+
+driver
+ maxiter 200
+end
+
+task dft optimize
