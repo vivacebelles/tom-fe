@@ -1,0 +1,59 @@
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt6311+g-star/feopt39/*.movecs': No such file or directory
+cp: cannot stat `/home/alolinco/tom-fe/tomfe_opt6311+g-star/feopt39/*.hess': No such file or directory
+=>> PBS: job killed: walltime 720013 exceeded limit 720000
+Last System Error Message from Task 1:: Numerical result out of range
+Last System Error Message from Task 2:: Numerical result out of range
+Last System Error Message from Task 3:: Numerical result out of range
+Last System Error Message from Task 16:: Numerical result out of range
+Last System Error Message from Task 32:: Numerical result out of range
+Last System Error Message from Task 4:: Numerical result out of range
+Last System Error Message from Task 17:: Numerical result out of range
+Last System Error Message from Task 33:: Numerical result out of range
+Last System Error Message from Task 48:: Numerical result out of range
+Last System Error Message from Task 5:: Numerical result out of range
+Last System Error Message from Task 18:: Numerical result out of range
+Last System Error Message from Task 34:: Numerical result out of range
+Last System Error Message from Task 49:: Numerical result out of range
+Last System Error Message from Task 6:: Numerical result out of range
+Last System Error Message from Task 19:: Numerical result out of range
+Last System Error Message from Task 35:: Numerical result out of range
+Last System Error Message from Task 50:: Numerical result out of range
+Last System Error Message from Task 7:: Numerical result out of range
+Last System Error Message from Task 20:: Numerical result out of range
+Last System Error Message from Task 38:: Numerical result out of range
+Last System Error Message from Task 51:: Numerical result out of range
+Last System Error Message from Task 8:: Numerical result out of range
+Last System Error Message from Task 52:: Numerical result out of range
+Last System Error Message from Task 9:: Numerical result out of range
+Last System Error Message from Task 21:: Numerical result out of range
+Last System Error Message from Task 39:: Numerical result out of range
+Last System Error Message from Task 10:: Numerical result out of range
+Last System Error Message from Task 22:: Numerical result out of range
+Last System Error Message from Task 40:: Numerical result out of range
+Last System Error Message from Task 53:: Numerical result out of range
+Last System Error Message from Task 11:: Numerical result out of range
+Last System Error Message from Task 23:: Numerical result out of range
+Last System Error Message from Task 41:: Numerical result out of range
+Last System Error Message from Task 54:: Numerical result out of range
+Last System Error Message from Task 12:: Numerical result out of range
+Last System Error Message from Task 24:: Numerical result out of range
+Last System Error Message from Task 36:: Numerical result out of range
+Last System Error Message from Task 55:: Numerical result out of range
+Last System Error Message from Task 13:: Numerical result out of range
+Last System Error Message from Task 25:: Numerical result out of range
+Last System Error Message from Task 37:: Numerical result out of range
+Last System Error Message from Task 56:: Numerical result out of range
+Last System Error Message from Task 14:: Numerical result out of range
+Last System Error Message from Task 26:: Numerical result out of range
+Last System Error Message from Task 42:: Numerical result out of range
+Last System Error Message from Task 57:: Numerical result out of range
+Last System Error Message from Task 15:: Numerical result out of range
+Last System Error Message from Task 27:: Numerical result out of range
+Last System Error Message from Task 43:: Numerical result out of range
+Last System Error Message from Task 58:: Numerical result out of range
+[mpiexec@compute-0-13.local] HYDU_sock_write (utils/sock/sock.c:286): write error (Broken pipe)
+[mpiexec@compute-0-13.local] stdoe_cb (ui/utils/uiu.c:308): unable to write data to stdout/stderr
+[mpiexec@compute-0-13.local] control_cb (pm/pmiserv/pmiserv_cb.c:295): error in the UI defined callback
+[mpiexec@compute-0-13.local] HYDT_dmxu_poll_wait_for_event (tools/demux/demux_poll.c:76): callback returned error status
+[mpiexec@compute-0-13.local] HYD_pmci_wait_for_completion (pm/pmiserv/pmiserv_pmci.c:198): error waiting for event
+[mpiexec@compute-0-13.local] main (ui/mpich/mpiexec.c:336): process manager error waiting for completion
