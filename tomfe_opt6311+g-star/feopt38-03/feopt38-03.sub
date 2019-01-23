@@ -1,16 +1,16 @@
 #!/bin/bash
 #PBS -q default
-#PBS -l walltime=200:00:00
+#PBS -l walltime=190:00:00
 #PBS -l nodes=4:ppn=16
 #PBS -W x=NACCESSPOLICY:SHARED
-#PBS -N feopt
-#PBS -e feopt.stderr
-#PBS -o feopt.stdout
+#PBS -N feopt38-03
+#PBS -e feopt38-03.stderr
+#PBS -o feopt38-03.stdout
 
 
 #Set job specific environment variables
 nodes=`uniq $PBS_NODEFILE`
-scr=/var/scratch/alolinco/feopt
+scr=/var/scratch/alolinco/feopt38-03
 jobdir=/home/alolinco/tom-fe/tomfe_opt6311+g-star/feopt38-03
 export ARMCI_DEFAULT_SHMMAX=8000
 
@@ -36,9 +36,9 @@ source /home/weverett/nwchem/6.5-all/env
 #export LD_LIBRARY_PATH=$MPI_LOC/lib:$LD_LIBRARY_PATH
 
 #Print node information and copy files for job
-printf "===$(date +"%Y-%m-%d-%r") run nodes===\n$nodes \n" >> $jobdir/feopt.nodes
+printf "===$(date +"%Y-%m-%d-%r") run nodes===\n$nodes \n" >> $jobdir/feopt38-03.nodes
 for i in ${nodes}; do ssh $i "mkdir -p $scr";done
-cp $jobdir/feopt.nw $scr
+cp $jobdir/feopt38-03.nw $scr
 cp $jobdir/*.movecs $scr
 cp $jobdir/*.hess $scr
 
@@ -47,7 +47,7 @@ ulimit -s unlimited
 ulimit -c unlimited
 cd $scr
 mpdboot
-mpiexec -np 64 nwchem feopt.nw | tee $jobdir/feopt.out
+mpiexec -np 64 nwchem feopt38-03.nw | tee $jobdir/feopt38-03.out
 mpdallexit
 cp $scr/*.db $jobdir
 cp $scr/*.movecs $jobdir

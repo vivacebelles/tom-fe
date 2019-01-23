@@ -11,7 +11,7 @@
 #Set job specific environment variables
 nodes=`uniq $PBS_NODEFILE`
 scr=/var/scratch/alolinco/feopt
-jobdir=/home/alolinco/tom-fe/tomfe_opt6311+g-star/feopt46
+jobdir=/home/alolinco/tom-fe/tomfe_opt6311+g-star/feopt47
 export ARMCI_DEFAULT_SHMMAX=8000
 
 #Set environment variables for the nwchem version
